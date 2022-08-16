@@ -1,5 +1,5 @@
 import React from "react";
-import Sample from "./explore-page/GenreContainer";
+import Sample from "./ExplorePage/GenreContainer";
 
 const Home = () => {
   return <div>Homepage</div>;

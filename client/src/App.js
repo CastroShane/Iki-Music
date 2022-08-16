@@ -1,7 +1,7 @@
-import Sample from "./component/pages/explore-page/GenreContainer";
+import Sample from "./component/pages/ExplorePage/GenreContainer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./component/pages/Home";
-import Explore from "./component/pages/explore-page/Explore";
+import Explore from "./component/pages/ExplorePage/Explore";
 import NavBar from "./component/NavBar";
 import Account from "./component/pages/Account";
 import GlobalStyles from "./component/GlobalStyles";
