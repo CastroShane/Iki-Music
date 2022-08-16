@@ -32,13 +32,16 @@ const NavBar = () => {
 };
 
 const Wrapper = styled.div`
+  z-index: 99999;
+  position: sticky;
+  top: 0;
   width: 100vw;
   display: flex;
   align-items: center;
   font-size: 20px;
   justify-content: space-between;
   height: 70px;
-  background-color: transparent;
+  background-color: black;
 `;
 
 const NavLink = styled(Link)`
