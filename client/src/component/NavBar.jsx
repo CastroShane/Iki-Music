@@ -46,7 +46,6 @@ const Wrapper = styled.div`
   font-size: 18px;
   justify-content: space-between;
   height: 60px;
-  transition: "all .5s ease";
 
   &.changing-background {
     background-color: var(--default-font-color);
