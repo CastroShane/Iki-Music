@@ -6,7 +6,7 @@ const NavBar = () => {
   //Change navBar color when scrolling
   const [color, setColor] = useState(false);
   const changeColor = () => {
-    if (window.scrollY >= 80) {
+    if (window.scrollY >= 70) {
       setColor(true);
     } else setColor(false);
   };
@@ -43,9 +43,9 @@ const Wrapper = styled.div`
   width: 100vw;
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
   justify-content: space-between;
-  height: 70px;
+  height: 60px;
   transition: "all .5s ease";
 
   &.changing-background {
