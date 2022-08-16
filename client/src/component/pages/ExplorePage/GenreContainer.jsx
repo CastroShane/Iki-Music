@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { GenreContext } from "../../context/GenreContext";
@@ -84,7 +84,7 @@ const StyledDiv = styled.div`
   font-size: 1.5rem;
   font-weight: 500;
   z-index: 999;
-  color: #831010;
+  color: var(--default-font-color);
   background: rgb(255, 255, 255, 0.8);
   border-bottom-left-radius: 15px;
 `;

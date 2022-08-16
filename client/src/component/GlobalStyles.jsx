@@ -1,14 +1,19 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+
+:root {
+  --default-font-color: #FF6A6A;
+  --stronger-font-color: #CC5454;
+}
 /*
   1. Use a more-intuitive box-sizing model.
 */
 *, *::before, *::after {
   box-sizing: border-box;
   font-family: sans-serif;
-  background-color: #000000;
-  color: white;
+  background-color: white;
+  color: black;
 }
 /*
   2. Remove default margin
@@ -50,7 +55,7 @@ input, button, textarea, select {
   8. Avoid text overflows
 */
 p, h1, h2, h3, h4, h5, h6 {
-    color: 	white;
+  color: 	#FF6A6A;
   overflow-wrap: break-word;
 }
 /*

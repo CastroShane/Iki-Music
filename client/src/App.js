@@ -1,4 +1,3 @@
-import Sample from "./component/pages/ExplorePage/GenreContainer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./component/pages/Home";
 import Explore from "./component/pages/ExplorePage/Explore";

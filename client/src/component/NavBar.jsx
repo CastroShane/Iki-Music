@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  //Change navBar color when scrolling
+  const [color, setColor] = useState(false);
+  const changeColor = () => {
+    if (window.scrollY >= 80) {
+      setColor(true);
+    } else setColor(false);
+  };
+
+  window.addEventListener("scroll", changeColor);
   return (
     <>
-      <Wrapper>
+      <Wrapper className={color ? "changing-background" : null}>
         <div
           style={{
             display: "flex",
@@ -16,15 +25,11 @@ const NavBar = () => {
         >
           <NavLink to="/">Home</NavLink>
           <NavLink to="/explore">Explore</NavLink>
-          <NavLink to="/podcasts" style={{ color: "#831010" }}>
-            Podcasts
-          </NavLink>
+          <NavLink to="/podcasts">Podcasts</NavLink>
           <NavLink to="/about">About</NavLink>
         </div>
         <div style={{ marginRight: "15px", background: "none" }}>
-          <NavLink to="/account" style={{ color: "#db0000" }}>
-            Login
-          </NavLink>
+          <NavLink to="/account">Login</NavLink>
         </div>
       </Wrapper>
     </>
@@ -41,15 +46,24 @@ const Wrapper = styled.div`
   font-size: 20px;
   justify-content: space-between;
   height: 70px;
-  background-color: black;
+  transition: "all .5s ease";
+
+  &.changing-background {
+    background-color: var(--default-font-color);
+
+    a {
+      color: white;
+    }
+  }
+
+  transition: background-color 300ms linear;
 `;
 
 const NavLink = styled(Link)`
   margin: 10px;
   text-decoration: none;
-  color: white;
+  color: var(--stronger-font-color);
   background-color: transparent;
-  font-weight: bold;
 `;
 
 export default NavBar;
