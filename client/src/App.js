@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./component/pages/Home";
 import Explore from "./component/pages/ExplorePage/Explore";
 import NavBar from "./component/NavBar";
 import Account from "./component/pages/Account";
 import GlobalStyles from "./component/GlobalStyles";
 import styled from "styled-components";
+import Home from "./component/pages/Homepage/Home";
+import ArtistPage from "./component/pages/ArtistPage/ArtistPage";
+import AlbumPage from "./component/pages/AlbumPage/AlbumPage";
 
 const App = () => {
   return (
@@ -14,9 +16,23 @@ const App = () => {
         <Router>
           <NavBar />
           <Switch>
-            <Route exact path="/" component={Home}></Route>
-            <Route exact path="/explore" component={Explore}></Route>
-            <Route exact path="/account" component={Account}></Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/explore">
+              <Explore />
+            </Route>
+            <Route exact path="/account">
+              <Account />
+            </Route>
+            <Route exact path="/artist/:id">
+              <ArtistPage />
+            </Route>
+
+            <Route exact path="/album/:id">
+              <AlbumPage />
+            </Route>
+
             {/* <Route exact path="/for-you" component={ForYou}></Route> */}
           </Switch>
         </Router>
