@@ -28,7 +28,7 @@ const PopularArtists = () => {
                 layout
                 key={id}
               >
-                <StyledLink to={`/`}>
+                <StyledLink to={`/artist/${id}`}>
                   <img src={picture_xl} />
                   <p> {name}</p>
                 </StyledLink>
