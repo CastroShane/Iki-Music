@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useContext } from "react";
 import EditorialContext from "../../../context/EditorialContext";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const PopularArtists = () => {
   const { artists } = useContext(EditorialContext);
@@ -14,16 +15,27 @@ const PopularArtists = () => {
         </div>
       </InfoWrapper>
       <CardWrapper layout>
-        {artists?.map((artist) => {
-          console.log(artist);
-          const { name, id, picture_xl } = artist;
-          return (
-            <StyledLink to={`/`}>
-              <img src={picture_xl} />
-              <p> {name}</p>
-            </StyledLink>
-          );
-        })}
+        <AnimatePresence>
+          {artists?.map((artist) => {
+            console.log(artist);
+            const { name, id, picture_xl } = artist;
+            return (
+              <motion.div
+                style={{ display: "flex" }}
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                exit={{ opacity: 0 }}
+                layout
+                key={id}
+              >
+                <StyledLink to={`/`}>
+                  <img src={picture_xl} />
+                  <p> {name}</p>
+                </StyledLink>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
       </CardWrapper>
     </Container>
   );
