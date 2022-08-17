@@ -17,7 +17,6 @@ const PopularArtists = () => {
       <CardWrapper layout>
         <AnimatePresence>
           {artists?.map((artist) => {
-            console.log(artist);
             const { name, id, picture_xl } = artist;
             return (
               <motion.div
