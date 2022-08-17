@@ -1,27 +1,47 @@
 import React from "react";
 import styled from "styled-components";
-import { GrCaretPrevious, GrCaretNext } from "react-icons/gr";
+import { useContext } from "react";
+import EditorialContext from "../../../context/EditorialContext";
+import { Link } from "react-router-dom";
 
 const PopularArtists = () => {
+  const { artists } = useContext(EditorialContext);
   return (
     <Container>
       <InfoWrapper>
         <div>
-          <h2>Popular Artists</h2>
-        </div>
-        <div className="prev-next">
-          <GrCaretPrevious size={30} />
-          <GrCaretNext size={30} />
+          <h2 style={{ fontSize: "2rem" }}>Popular Artists</h2>
         </div>
       </InfoWrapper>
-      <CardWrapper></CardWrapper>
+      <CardWrapper layout>
+        {artists?.map((artist) => {
+          console.log(artist);
+          const { name, id, picture_xl } = artist;
+          return (
+            <StyledLink to={`/`}>
+              <img src={picture_xl} />
+              <p> {name}</p>
+            </StyledLink>
+          );
+        })}
+      </CardWrapper>
     </Container>
   );
 };
 
+const StyledLink = styled(Link)`
+  width: 150px;
+  margin: 15px 20px;
+  text-decoration: none;
+  transition: transform 0.2s ease-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: translate(2px, -5px);
+  }
+`;
 const Container = styled.div`
   margin-top: 20px;
-  border: 1px solid red;
   min-height: 35vh;
 `;
 const InfoWrapper = styled.div`
@@ -30,12 +50,36 @@ const InfoWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid red;
+`;
+const CardWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px 0 15px;
+  height: 100%;
 
-  .prev-next {
-    display: flex;
+  img {
+    margin-top: 10px;
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  }
+
+  p {
+    padding-top: 10px;
+    font-size: 1rem;
+    margin: 0;
+    white-space: nowrap;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+    background-color: transparent;
+    text-align: center;
   }
 `;
-const CardWrapper = styled.div``;
 
 export default PopularArtists;
