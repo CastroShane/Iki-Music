@@ -57,6 +57,7 @@ input, button, textarea, select {
 p, h1, h2, h3, h4, h5, h6 {
   color: 	#FF6A6A;
   overflow-wrap: break-word;
+  
 }
 /*
   9. Create a root stacking context

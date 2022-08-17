@@ -6,6 +6,7 @@ import GlobalStyles from "./component/GlobalStyles";
 import styled from "styled-components";
 import Home from "./component/pages/Homepage/Home";
 import ArtistPage from "./component/pages/ArtistPage/ArtistPage";
+import AlbumPage from "./component/pages/AlbumPage/AlbumPage";
 
 const App = () => {
   return (
@@ -26,6 +27,10 @@ const App = () => {
             </Route>
             <Route exact path="/artist/:id">
               <ArtistPage />
+            </Route>
+
+            <Route exact path="/album/:id">
+              <AlbumPage />
             </Route>
 
             {/* <Route exact path="/for-you" component={ForYou}></Route> */}

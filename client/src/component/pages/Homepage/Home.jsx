@@ -33,7 +33,6 @@ const LeftSide = styled.div`
   margin: 20px;
   width: 50%;
   height: 100%;
-  border: 1px solid red;
 `;
 const RightSide = styled.div`
   margin: 20px;
