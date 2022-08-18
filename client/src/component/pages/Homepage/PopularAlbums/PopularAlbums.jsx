@@ -74,10 +74,10 @@ const PopularAlbums = () => {
               {albums[index].title}
             </Title>
             <button className="prevBtn" onClick={prevImg}>
-              <AiFillCaretLeft size={30} />
+              <PrevIcon size={50} />
             </button>
             <button className="nextBtn" onClick={nextImg}>
-              <AiFillCaretRight size={30} />
+              <NextIcon size={30} />
             </button>
           </>
         </SlideShow>
@@ -86,6 +86,15 @@ const PopularAlbums = () => {
   );
 };
 
+const PrevIcon = styled(AiFillCaretLeft)`
+  background-color: transparent;
+  color: purple;
+`;
+
+const NextIcon = styled(AiFillCaretRight)`
+  background-color: transparent;
+  color: purple;
+`;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
