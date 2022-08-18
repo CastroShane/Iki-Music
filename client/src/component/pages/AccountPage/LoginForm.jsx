@@ -12,11 +12,15 @@ import Marginer from "./Margin";
 
 const LoginForm = () => {
   const { switchToSignUp } = useContext(AccountContext);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Imworking");
+  };
   return (
     <BoxContainer>
-      <FormContainer>
-        <Input type="email" placeholder="Email"></Input>
-        <Input type="password" placeholder="Password"></Input>
+      <FormContainer onSubmit={handleSubmit}>
+        <Input type="email" placeholder="Email" required></Input>
+        <Input type="password" placeholder="Password" required></Input>
       </FormContainer>
       <Marginer direction={"vertical"} margin={10} />
       <MutedLink href="#"> Forget your password?</MutedLink>
