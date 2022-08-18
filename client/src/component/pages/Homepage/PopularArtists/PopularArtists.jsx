@@ -57,7 +57,7 @@ const Container = styled.div`
 `;
 const InfoWrapper = styled.div`
   padding: 15px;
-  width: auto;
+  width: 99%;
   display: flex;
   align-items: center;
   justify-content: space-between;

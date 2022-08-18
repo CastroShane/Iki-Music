@@ -109,6 +109,7 @@ const SlideShow = styled.div`
   display: flex;
   margin: 15px;
   width: 100%;
+  height: 100%;
   aspect-ratio: calc(16 / 9);
   position: relative;
   overflow: hidden;

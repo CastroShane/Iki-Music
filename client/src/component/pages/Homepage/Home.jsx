@@ -9,7 +9,14 @@ import TrendingPlaylists from "./TrendingPlaylists/TrendingPlaylists";
 
 const Home = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "start",
+      }}
+    >
       <PopularArtists />
       <TwoColumns>
         <LeftSide>
@@ -30,16 +37,18 @@ const TwoColumns = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: 60vh;
+  width: 99%;
+  height: 80vh;
 `;
 
 const LeftSide = styled.div`
+  position: relative;
   margin: 20px;
   width: 50%;
   height: 100%;
 `;
 const RightSide = styled.div`
+  position: relative;
   margin: 20px;
   width: 50%;
   height: 100%;
