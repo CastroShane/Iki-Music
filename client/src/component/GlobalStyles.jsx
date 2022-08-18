@@ -5,6 +5,10 @@ export default createGlobalStyle`
 :root {
   --default-font-color: #FF6A6A;
   --stronger-font-color: #CC5454;
+  /* background: linear-gradient(to right, rgb(221, 214, 243), rgb(250, 172, 168)) no-repeat center center fixed; */
+  background: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%) no-repeat center center fixed;
+
+
 }
 /*
   1. Use a more-intuitive box-sizing model.
@@ -12,7 +16,7 @@ export default createGlobalStyle`
 *, *::before, *::after {
   box-sizing: border-box;
   font-family: sans-serif;
-  background-color: white;
+
   color: black;
 }
 /*
@@ -26,6 +30,9 @@ export default createGlobalStyle`
 */
 html, body {
   height: 100%;
+  /* Created with https://www.css-gradient.com */
+
+  
 }
 /*
   Typographic tweaks!
