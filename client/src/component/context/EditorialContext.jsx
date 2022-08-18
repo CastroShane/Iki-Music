@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import { useEffect } from "react";
-
+import { useQuery } from "react-query";
 export const EditorialContext = createContext(null);
 const initialState = {
   tracks: null,
@@ -25,31 +25,30 @@ const EditorialReducer = (state, action) => {
       throw new Error(`Unknown action type: ${action.type}`);
   }
 };
+
+const fetchEditorials = async () => {
+  const res = await fetch("/editorial");
+  return await res.json();
+};
 export const EditorialContextProvider = ({ children }) => {
   const [editorialState, editorialDispatcher] = useReducer(
     EditorialReducer,
     initialState
   );
-
+  const results = useQuery("get-editorials", fetchEditorials);
+  const { isLoading, data } = results;
   useEffect(() => {
-    const fetchEditorialData = async () => {
-      try {
-        const response = await fetch("/editorial");
-        const jsonData = await response.json();
+    if (!isLoading) {
+      editorialDispatcher({ type: "getting-editorial-data", data: data.data });
+    }
+  }, [isLoading]);
 
-        const data = await jsonData.data;
-
-        editorialDispatcher({ type: "getting-editorial-data", data: data });
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchEditorialData();
-  }, []);
   const { tracks, albums, artists, playlists } = editorialState;
 
   return (
-    <EditorialContext.Provider value={{ tracks, albums, artists, playlists }}>
+    <EditorialContext.Provider
+      value={{ isLoading, tracks, albums, artists, playlists }}
+    >
       {children}
     </EditorialContext.Provider>
   );

@@ -2,25 +2,22 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import { useQuery } from "react-query";
+const fetchNewReleases = async () => {
+  const res = await fetch("/new-releases");
+  return await res.json();
+};
 const NewReleases = () => {
   const [newReleases, setNewReleases] = useState([]);
+  const results = useQuery("get-genres", fetchNewReleases);
+  const { isLoading, data } = results;
+
   useEffect(() => {
-    const fetchNewReleasesData = async () => {
-      try {
-        const response = await fetch("/new-releases");
-        const jsonData = await response.json();
+    if (!isLoading) {
+      setNewReleases(data.data.data);
+    }
+  }, [isLoading]);
 
-        const data = await jsonData.data.data;
-
-        setNewReleases(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchNewReleasesData();
-  }, []);
-  console.log("newReleases:", newReleases);
   return (
     <Container>
       <InfoWrapper>
@@ -29,26 +26,28 @@ const NewReleases = () => {
         </div>
       </InfoWrapper>
       <CardWrapper layout>
-        <AnimatePresence>
-          {newReleases?.map((playlist) => {
-            const { id, cover_medium, title } = playlist;
-            return (
-              <motion.div
-                style={{ display: "flex" }}
-                animate={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-                exit={{ opacity: 0 }}
-                layout
-                key={id}
-              >
-                <StyledLink to={`/playlist/${id}`}>
-                  <img src={cover_medium} />
-                  <p>{title}</p>
-                </StyledLink>
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
+        {!isLoading && (
+          <AnimatePresence>
+            {newReleases?.map((playlist) => {
+              const { id, cover_medium, title } = playlist;
+              return (
+                <motion.div
+                  style={{ display: "flex" }}
+                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  exit={{ opacity: 0 }}
+                  layout
+                  key={id}
+                >
+                  <StyledLink to={`/playlist/${id}`}>
+                    <img src={cover_medium} />
+                    <p>{title}</p>
+                  </StyledLink>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        )}
       </CardWrapper>
     </Container>
   );
