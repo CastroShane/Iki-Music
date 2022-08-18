@@ -13,9 +13,15 @@ const options = {
 const startClient = async () => {
   const client = new MongoClient(MONGO_URI, options);
   await client.connect();
-  return client;
+  const db = client.db("Iki-Music");
+  return db;
+};
+
+const sendResponse = (res, status, data, message = "No message included.") => {
+  res.status(status).json({ status, data, message });
 };
 
 module.exports = {
   startClient,
+  sendResponse,
 };
