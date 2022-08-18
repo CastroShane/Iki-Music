@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import NewReleases from "./NewReleases/NewReleases";
 import PopularAlbums from "./PopularAlbums/PopularAlbums";
 import PopularArtists from "./PopularArtists/PopularArtists";
 
@@ -19,11 +20,13 @@ const Home = () => {
         </RightSide>
       </TwoColumns>
       <TrendingPlaylists />
+      <NewReleases />
     </div>
   );
 };
 
 const TwoColumns = styled.div`
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
