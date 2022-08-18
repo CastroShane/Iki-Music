@@ -19,7 +19,11 @@ const PlayButton = ({ songUrl }) => {
   });
   return (
     <Wrapper style={{ marginTop: "12px" }}>
-      {nowPlaying ? <FaPause onClick={toggle} /> : <FaPlay onClick={toggle} />}
+      {nowPlaying ? (
+        <PauseIcon onClick={toggle} />
+      ) : (
+        <PlayIcon onClick={toggle} />
+      )}
     </Wrapper>
   );
 };
@@ -28,10 +32,18 @@ const Wrapper = styled.div`
   position: absolute;
   right: 60px;
   transition: all 0.2s ease-out;
+  background-color: transparent;
 
   &:hover {
     cursor: pointer;
     color: rgba(255, 255, 255, 0.5);
   }
+`;
+
+const PauseIcon = styled(FaPause)`
+  background-color: transparent;
+`;
+const PlayIcon = styled(FaPlay)`
+  background-color: transparent;
 `;
 export default PlayButton;

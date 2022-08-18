@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 
 const app = express();
-const { getGenres, getEditorial } = require("./serverHandlers");
+const { getGenres, getEditorial, getNewReleases } = require("./serverHandlers");
 app
   .use(morgan("tiny"))
   .use(express.static("public"))
@@ -14,6 +14,7 @@ app
 
   .get("/all-genres", getGenres)
   .get("/editorial", getEditorial)
+  .get("/new-releases", getNewReleases)
 
   .get("/test", (req, res) => {
     res.send("I'm working!");

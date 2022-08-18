@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useContext } from "react";
-import EditorialContext from "../../../context/EditorialContext";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
-const PopularArtists = () => {
-  const { artists } = useContext(EditorialContext);
+const NewReleases = () => {
+  const [newReleases, setNewReleases] = useState([]);
+  useEffect(() => {
+    const fetchNewReleasesData = async () => {
+      try {
+        const response = await fetch("/new-releases");
+        const jsonData = await response.json();
+
+        const data = await jsonData.data.data;
+
+        setNewReleases(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchNewReleasesData();
+  }, []);
+  console.log("newReleases:", newReleases);
   return (
     <Container>
       <InfoWrapper>
         <div>
-          <h2 style={{ fontSize: "2rem" }}>Popular Artists</h2>
+          <h2 style={{ fontSize: "2rem" }}>New Releases</h2>
         </div>
       </InfoWrapper>
       <CardWrapper layout>
         <AnimatePresence>
-          {artists?.map((artist) => {
-            const { name, id, picture_xl } = artist;
+          {newReleases?.map((playlist) => {
+            const { id, cover_medium, title } = playlist;
             return (
               <motion.div
                 style={{ display: "flex" }}
@@ -27,9 +41,9 @@ const PopularArtists = () => {
                 layout
                 key={id}
               >
-                <StyledLink to={`/artist/${id}`}>
-                  <img src={picture_xl} />
-                  <p> {name}</p>
+                <StyledLink to={`/playlist/${id}`}>
+                  <img src={cover_medium} />
+                  <p>{title}</p>
                 </StyledLink>
               </motion.div>
             );
@@ -57,14 +71,12 @@ const Container = styled.div`
 `;
 const InfoWrapper = styled.div`
   padding: 15px;
-  width: 99%;
+  width: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 `;
 const CardWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   padding: 0 15px 0 15px;
   height: 100%;
 
@@ -93,4 +105,4 @@ const CardWrapper = styled.div`
   }
 `;
 
-export default PopularArtists;
+export default NewReleases;
