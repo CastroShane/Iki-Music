@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import PlayButton from "./PlayButton";
+import { motion, AnimatePresence } from "framer-motion";
 
 const SongCard = ({ track }) => {
-  const { title, album, title_short, artist, duration, preview } = track;
+  const { title, album, title_short, artist, duration, preview, id } = track;
 
   const convertDuration = (duration) => {
     let minutes = Math.floor(duration / 60);
@@ -14,27 +15,36 @@ const SongCard = ({ track }) => {
     return `${minutes}:${seconds}`;
   };
   return (
-    <Container>
-      <Cover>
-        <img src={album.cover_small} alt={title} />
-      </Cover>
-      <Details>
-        <span>{title_short}</span>
-        <div className="stars">
-          <p key={artist.id} className="song-artist">
-            {artist.name}
+    <AnimatePresence>
+      <Container
+        style={{ display: "flex" }}
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        exit={{ opacity: 0 }}
+        layout
+        key={id}
+      >
+        <Cover>
+          <img src={album.cover_small} alt={title} />
+        </Cover>
+        <Details>
+          <span>{title_short}</span>
+          <div className="stars">
+            <p key={artist.id} className="song-artist">
+              {artist.name}
+            </p>
+          </div>
+          <p className="duration" style={{ marginTop: "12px" }}>
+            {convertDuration(duration)}
           </p>
-        </div>
-        <p className="duration" style={{ marginTop: "12px" }}>
-          {convertDuration(duration)}
-        </p>
-        <PlayButton songUrl={preview} />
-      </Details>
-    </Container>
+          <PlayButton songUrl={preview} />
+        </Details>
+      </Container>
+    </AnimatePresence>
   );
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   position: relative;
   display: flex;
   align-items: center;
