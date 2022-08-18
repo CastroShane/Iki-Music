@@ -57,45 +57,36 @@ const Account = () => {
   };
   return (
     <AccountContext.Provider value={contextValue}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "80vh",
-        }}
-      >
-        <Container>
-          <Wrapper>
-            <TopContainer>
-              <BackDrop
-                initial={false}
-                animate={isExpanded ? "expanded" : "collapsed"}
-                variants={backdropVariants}
-                transition={expandingTransition}
-              />
-              {active === "signin" && (
-                <HeaderContainer>
-                  <HeaderText>Welcome</HeaderText>
-                  <HeaderText>Back</HeaderText>
-                  <SmallText>Please sign-in to continue!</SmallText>
-                </HeaderContainer>
-              )}
-              {active === "signup" && (
-                <HeaderContainer>
-                  <HeaderText>Create</HeaderText>
-                  <HeaderText>Account</HeaderText>
-                  <SmallText>Please sign-up to continue!</SmallText>
-                </HeaderContainer>
-              )}
-            </TopContainer>
-            <InnerContainer>
-              {active === "signin" && <LoginForm />}
-              {active === "signup" && <SignUpForm />}
-            </InnerContainer>
-          </Wrapper>
-        </Container>
-      </div>
+      <Container>
+        <Wrapper>
+          <TopContainer>
+            <BackDrop
+              initial={false}
+              animate={isExpanded ? "expanded" : "collapsed"}
+              variants={backdropVariants}
+              transition={expandingTransition}
+            />
+            {active === "signin" && (
+              <HeaderContainer>
+                <HeaderText>Welcome</HeaderText>
+                <HeaderText>Back</HeaderText>
+                <SmallText>Please sign-in to continue!</SmallText>
+              </HeaderContainer>
+            )}
+            {active === "signup" && (
+              <HeaderContainer>
+                <HeaderText>Create</HeaderText>
+                <HeaderText>Account</HeaderText>
+                <SmallText>Please sign-up to continue!</SmallText>
+              </HeaderContainer>
+            )}
+          </TopContainer>
+          <InnerContainer>
+            {active === "signin" && <LoginForm />}
+            {active === "signup" && <SignUpForm />}
+          </InnerContainer>
+        </Wrapper>
+      </Container>
     </AccountContext.Provider>
   );
 };
@@ -130,7 +121,7 @@ const SmallText = styled.h5`
 `;
 const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -144,7 +135,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   border-radius: 19px;
   background-color: white;
-  /* box-shadow: 0 0 2px rgba(15, 15, 15, 0.28); */
 
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
     rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
