@@ -1,4 +1,7 @@
 const fetch = require("node-fetch");
+// use this package to generate unique ids: https://www.npmjs.com/package/uuid
+const { v4: uuidv4 } = require("uuid");
+const { startClient } = require("./utils.js");
 
 const getGenres = async (req, res) => {
   // Returns all Genres

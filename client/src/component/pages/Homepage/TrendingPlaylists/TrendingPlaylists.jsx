@@ -29,7 +29,7 @@ const TrendingPlaylists = () => {
                 key={id}
               >
                 <StyledLink to={`/playlist/${id}`}>
-                  <img src={picture_xl} />
+                  <img src={picture_xl} alt={picture_xl} />
                 </StyledLink>
               </motion.div>
             );

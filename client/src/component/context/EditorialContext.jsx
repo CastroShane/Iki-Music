@@ -27,8 +27,12 @@ const EditorialReducer = (state, action) => {
 };
 
 const fetchEditorials = async () => {
-  const res = await fetch("/editorial");
-  return await res.json();
+  try {
+    const res = await fetch("/editorial");
+    return await res.json();
+  } catch (err) {
+    console.log(err);
+  }
 };
 export const EditorialContextProvider = ({ children }) => {
   const [editorialState, editorialDispatcher] = useReducer(
@@ -41,7 +45,7 @@ export const EditorialContextProvider = ({ children }) => {
     if (!isLoading) {
       editorialDispatcher({ type: "getting-editorial-data", data: data.data });
     }
-  }, [isLoading]);
+  }, [isLoading, data.data]);
 
   const { tracks, albums, artists, playlists } = editorialState;
 

@@ -4,8 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 const fetchNewReleases = async () => {
-  const res = await fetch("/new-releases");
-  return await res.json();
+  try {
+    const res = await fetch("/new-releases");
+    return await res.json();
+  } catch (err) {
+    console.log(err);
+  }
 };
 const NewReleases = () => {
   const [newReleases, setNewReleases] = useState([]);
@@ -16,7 +20,7 @@ const NewReleases = () => {
     if (!isLoading) {
       setNewReleases(data.data.data);
     }
-  }, [isLoading]);
+  }, [isLoading, data.data.data]);
 
   return (
     <Container>
@@ -40,7 +44,7 @@ const NewReleases = () => {
                   key={id}
                 >
                   <StyledLink to={`/playlist/${id}`}>
-                    <img src={cover_medium} />
+                    <img src={cover_medium} alt={title} />
                     <p>{title}</p>
                   </StyledLink>
                 </motion.div>
