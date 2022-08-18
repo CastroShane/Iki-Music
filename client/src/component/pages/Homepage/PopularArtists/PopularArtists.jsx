@@ -28,7 +28,7 @@ const PopularArtists = () => {
                 key={id}
               >
                 <StyledLink to={`/artist/${id}`}>
-                  <img src={picture_xl} />
+                  <img src={picture_xl} alt={name} />
                   <p> {name}</p>
                 </StyledLink>
               </motion.div>

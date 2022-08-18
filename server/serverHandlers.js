@@ -1,4 +1,7 @@
 const fetch = require("node-fetch");
+// // use this package to generate unique ids: https://www.npmjs.com/package/uuid
+// const { v4: uuidv4 } = require("uuid");
+const { startClient, sendResponse } = require("./utils.js");
 
 const getGenres = async (req, res) => {
   // Returns all Genres
@@ -36,4 +39,15 @@ const getNewReleases = async (req, res) => {
   }
 };
 
-module.exports = { getGenres, getEditorial, getNewReleases };
+// Test MongoDb
+const testDB = async (req, res) => {
+  try {
+    const db = await startClient();
+    const allUsers = await db.collection("users").find().toArray();
+    sendResponse(res, 200, allUsers, "These are the users");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { getGenres, getEditorial, getNewReleases, testDB };

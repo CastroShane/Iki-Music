@@ -26,7 +26,7 @@ const GenreContainer = () => {
                   >
                     <StyledLink to={"/"}>
                       <Card>
-                        <Img src={data.picture_medium} />
+                        <Img src={data.picture_medium} alt={data.name} />
                         <StyledDiv>{data.name}</StyledDiv>
                       </Card>
                     </StyledLink>
