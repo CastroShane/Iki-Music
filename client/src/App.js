@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Explore from "./component/pages/ExplorePage/Explore";
 import NavBar from "./component/NavBar";
-import Account from "./component/pages/Account";
+import Account from "./component/pages/AccountPage/Account";
 import GlobalStyles from "./component/GlobalStyles";
 import styled from "styled-components";
 import Home from "./component/pages/Homepage/Home";

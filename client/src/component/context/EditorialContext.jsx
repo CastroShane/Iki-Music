@@ -41,11 +41,12 @@ export const EditorialContextProvider = ({ children }) => {
   );
   const results = useQuery("get-editorials", fetchEditorials);
   const { isLoading, data } = results;
+
   useEffect(() => {
     if (!isLoading) {
       editorialDispatcher({ type: "getting-editorial-data", data: data.data });
     }
-  }, [isLoading, data.data]);
+  }, [isLoading]);
 
   const { tracks, albums, artists, playlists } = editorialState;
 

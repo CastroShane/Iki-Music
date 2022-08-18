@@ -20,7 +20,7 @@ const NewReleases = () => {
     if (!isLoading) {
       setNewReleases(data.data.data);
     }
-  }, [isLoading, data.data.data]);
+  }, [isLoading]);
 
   return (
     <Container>
