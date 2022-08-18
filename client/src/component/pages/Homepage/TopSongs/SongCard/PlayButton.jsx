@@ -11,6 +11,7 @@ const PlayButton = ({ songUrl }) => {
   }, [music, nowPlaying]);
 
   useEffect(() => {
+    //once the music ends, it will change the nowPlaying to false thus changing the Icon to play
     music.addEventListener("ended", () => setNowPlaying(false));
     return () => {
       music.removeEventListener("ended", () => setNowPlaying(false));

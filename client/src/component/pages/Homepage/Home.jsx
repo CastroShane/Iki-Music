@@ -4,6 +4,7 @@ import PopularAlbums from "./PopularAlbums/PopularAlbums";
 import PopularArtists from "./PopularArtists/PopularArtists";
 
 import TopSongs from "./TopSongs/TopSongs";
+import TrendingPlaylists from "./TrendingPlaylists/TrendingPlaylists";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
           <TopSongs />
         </RightSide>
       </TwoColumns>
+      <TrendingPlaylists />
     </div>
   );
 };
@@ -26,7 +28,7 @@ const TwoColumns = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 50vh;
+  height: 60vh;
 `;
 
 const LeftSide = styled.div`

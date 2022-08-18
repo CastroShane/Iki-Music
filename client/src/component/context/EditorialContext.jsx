@@ -46,10 +46,10 @@ export const EditorialContextProvider = ({ children }) => {
     };
     fetchEditorialData();
   }, []);
-  const { tracks, albums, artists, playlist } = editorialState;
+  const { tracks, albums, artists, playlists } = editorialState;
 
   return (
-    <EditorialContext.Provider value={{ tracks, albums, artists, playlist }}>
+    <EditorialContext.Provider value={{ tracks, albums, artists, playlists }}>
       {children}
     </EditorialContext.Provider>
   );

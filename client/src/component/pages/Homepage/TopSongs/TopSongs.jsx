@@ -5,13 +5,12 @@ import SongCard from "./SongCard/SongCard";
 
 const TopSongs = () => {
   const { tracks } = useContext(EditorialContext);
-  console.log("tracks:", tracks);
   return (
     <Wrapper>
       <h2>Top Songs</h2>
       <div className="songs-container">
         {tracks?.map((track) => {
-          return <SongCard track={track} />;
+          return <SongCard track={track} key={track.id} />;
         })}
       </div>
     </Wrapper>
