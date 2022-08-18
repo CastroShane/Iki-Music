@@ -1,7 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
 :root {
   --default-font-color: #FF6A6A;
   --stronger-font-color: #CC5454;
@@ -15,7 +19,6 @@ export default createGlobalStyle`
 */
 *, *::before, *::after {
   box-sizing: border-box;
-  font-family: sans-serif;
 
   color: black;
 }
@@ -30,8 +33,6 @@ export default createGlobalStyle`
 */
 html, body {
   height: 100%;
-  /* Created with https://www.css-gradient.com */
-
   
 }
 /*
@@ -39,12 +40,7 @@ html, body {
   4. Add accessible line-height
   5. Improve text rendering
 */
-body {
-  display: flex;
-justify-content:space-between;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
+
 /*
   6. Improve media defaults
 */
