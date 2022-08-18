@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Home from "./component/pages/Homepage/Home";
 import ArtistPage from "./component/pages/ArtistPage/ArtistPage";
 import AlbumPage from "./component/pages/AlbumPage/AlbumPage";
+import PlaylistPage from "./component/pages/PlaylistPage/PlaylistPage";
 
 const App = () => {
   return (
@@ -31,6 +32,9 @@ const App = () => {
 
             <Route exact path="/album/:id">
               <AlbumPage />
+            </Route>
+            <Route exact path="/playlist/:id">
+              <PlaylistPage />
             </Route>
 
             {/* <Route exact path="/for-you" component={ForYou}></Route> */}

@@ -99,7 +99,7 @@ const Wrapper = styled.div`
 const SlideShow = styled.div`
   display: flex;
   margin: 15px;
-  width: 80%;
+  width: 100%;
   aspect-ratio: calc(16 / 9);
   position: relative;
   overflow: hidden;

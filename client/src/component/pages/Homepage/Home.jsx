@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import PopularAlbums from "./PopularAlbums/PopularAlbums";
 import PopularArtists from "./PopularArtists/PopularArtists";
-import PopularGenres from "./PopularGenres/PopularGenres";
+
+import TopSongs from "./TopSongs/TopSongs";
+import TrendingPlaylists from "./TrendingPlaylists/TrendingPlaylists";
 
 const Home = () => {
   return (
@@ -13,9 +15,10 @@ const Home = () => {
           <PopularAlbums />
         </LeftSide>
         <RightSide>
-          <PopularGenres />
+          <TopSongs />
         </RightSide>
       </TwoColumns>
+      <TrendingPlaylists />
     </div>
   );
 };
@@ -25,8 +28,7 @@ const TwoColumns = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 50vh;
-  border: 1px solid red;
+  height: 60vh;
 `;
 
 const LeftSide = styled.div`
@@ -36,10 +38,8 @@ const LeftSide = styled.div`
 `;
 const RightSide = styled.div`
   margin: 20px;
-
   width: 50%;
   height: 100%;
-  border: 1px solid red;
 `;
 
 export default Home;
