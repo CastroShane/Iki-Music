@@ -7,6 +7,7 @@ const {
   getEditorial,
   getNewReleases,
   testDB,
+  addNewUser,
 } = require("./serverHandlers");
 app
   .use(morgan("tiny"))
@@ -20,6 +21,7 @@ app
   .get("/all-genres", getGenres)
   .get("/editorial", getEditorial)
   .get("/new-releases", getNewReleases)
+  .post("/account", addNewUser)
 
   .get("/testlang", testDB)
 
