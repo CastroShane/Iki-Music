@@ -5,7 +5,7 @@ import App from "./App";
 import { EditorialContextProvider } from "./component/context/EditorialContext";
 import { GenreContextProvider } from "./component/context/GenreContext";
 import { QueryClientProvider, QueryClient } from "react-query";
-import { CurrentUserContextProvider } from "./component/context/CurrentUser";
+import { CurrentUserContextProvider } from "./component/context/CurrentUserContext";
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

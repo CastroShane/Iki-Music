@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
-import { CurrentUserContext } from "../../context/CurrentUser";
 import { AccountContext } from "./AccountContext";
-import { useQuery } from "react-query";
 
 import {
   BoldLink,
@@ -26,7 +24,6 @@ const SignUpForm = () => {
   const { fullName, email, password, confirmPassword } = formFields;
   const [error, setError] = useState(null);
   const [errorText, setErrorText] = useState("");
-  const { setCurrentUser } = useContext(CurrentUserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -63,7 +60,6 @@ const SignUpForm = () => {
       setError(false);
       resetFormFields();
       setErrorText(data.message);
-      setCurrentUser(newUserData);
       switchToSignIn();
     }
   };
@@ -74,8 +70,7 @@ const SignUpForm = () => {
     setFormFields({ ...formFields, [name]: value });
     setError(false);
   };
-  console.log(error);
-  console.log(formFields);
+
   return (
     <BoxContainer>
       <FormContainer onSubmit={handleSubmit} id="signup-form">
