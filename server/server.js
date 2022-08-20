@@ -9,6 +9,7 @@ const {
   testDB,
   addNewUser,
   verifyUser,
+  addGoogleUser,
 } = require("./serverHandlers");
 app
   .use(morgan("tiny"))
@@ -24,6 +25,7 @@ app
   .get("/new-releases", getNewReleases)
   .post("/sign-up", addNewUser)
   .post("/sign-in", verifyUser)
+  .post("/google-signin", addGoogleUser)
 
   .get("/testlang", testDB)
 

@@ -74,7 +74,7 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    const handleCallbackResponse = (response) => {
+    const handleCallbackResponse = async (response) => {
       //Decode the JWT into an object so that we can use the data
       let userObj = jwt_decode(response.credential);
 
@@ -85,7 +85,15 @@ const LoginForm = () => {
         email: email.toLowerCase(),
         picture,
       };
+      console.log("googleUserData:", googleUserData);
       setCurrentUser(googleUserData);
+      await fetch("/google-signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(googleUserData),
+      });
     };
     /* global google */
     google.accounts.id.initialize({
@@ -98,7 +106,7 @@ const LoginForm = () => {
       theme: "outline",
       size: "medium",
     });
-  }, []);
+  }, [setCurrentUser]);
   return (
     <BoxContainer>
       <FormContainer onSubmit={handleSubmit} id="signin-form">
