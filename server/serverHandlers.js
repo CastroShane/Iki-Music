@@ -6,6 +6,7 @@ const {
   sendResponse,
   addUserDetails,
   getUsers,
+  findUser,
 } = require("./utils.js");
 
 const getGenres = async (req, res) => {
@@ -76,6 +77,21 @@ const addNewUser = async (req, res) => {
   }
 };
 
+const verifyUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const foundUser = await findUser(email, password);
+
+    if (foundUser) {
+      sendResponse(res, 200, foundUser, "User verified.");
+    } else {
+      sendResponse(res, 200, foundUser, "Please check your email or password.");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // Test MongoDb
 const testDB = async (req, res) => {
   try {
@@ -93,5 +109,6 @@ module.exports = {
   getEditorial,
   getNewReleases,
   addNewUser,
+  verifyUser,
   testDB,
 };

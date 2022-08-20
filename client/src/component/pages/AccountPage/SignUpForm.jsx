@@ -38,7 +38,7 @@ const SignUpForm = () => {
       return;
     }
 
-    const response = await fetch("/account", {
+    const response = await fetch("/sign-up", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

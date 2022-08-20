@@ -47,9 +47,22 @@ const getUsers = async () => {
     console.log(err);
   }
 };
+
+const findUser = async (email, password) => {
+  try {
+    const client = await startClient();
+    const db = client.db("Iki-Music");
+    const foundUser = await db.collection("users").findOne({ email, password });
+    client.close();
+    return foundUser;
+  } catch (err) {
+    console.log(err);
+  }
+};
 module.exports = {
   startClient,
   sendResponse,
   getUsers,
   addUserDetails,
+  findUser,
 };
