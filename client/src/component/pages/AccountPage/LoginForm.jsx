@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { AccountContext } from "./AccountContext";
@@ -11,6 +11,7 @@ import {
   SubmitButton,
 } from "./Common";
 import Marginer from "./Margin";
+import jwt_decode from "jwt-decode";
 
 const defaultFormFields = {
   email: "",
@@ -71,6 +72,33 @@ const LoginForm = () => {
       routeChange();
     }
   };
+
+  useEffect(() => {
+    const handleCallbackResponse = (response) => {
+      //Decode the JWT into an object so that we can use the data
+      let userObj = jwt_decode(response.credential);
+
+      const { name, picture, email } = userObj;
+
+      const googleUserData = {
+        fullName: name,
+        email: email.toLowerCase(),
+        picture,
+      };
+      setCurrentUser(googleUserData);
+    };
+    /* global google */
+    google.accounts.id.initialize({
+      client_id:
+        "666226095597-g19014tqtj834o66dtom3ef84rv5jp3b.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+
+    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+      theme: "outline",
+      size: "medium",
+    });
+  }, []);
   return (
     <BoxContainer>
       <FormContainer onSubmit={handleSubmit} id="signin-form">
@@ -93,19 +121,24 @@ const LoginForm = () => {
       </FormContainer>
       <Marginer direction={"vertical"} margin={10} />
       <MutedLink href="#"> Forget your password?</MutedLink>
-      <Marginer direction={"vertical"} margin="1.6em" />
+      <Marginer direction={"vertical"} margin="1.5em" />
       {error && <MutedLink style={{ color: "red" }}>{errorText}</MutedLink>}
 
       <SubmitButton type="submit" form="signin-form">
         Signin
       </SubmitButton>
-      <Marginer direction={"vertical"} margin="1em" />
+      <Marginer direction={"vertical"} margin="0.2em" />
       <MutedLink href="#">
         Don't have an account?{" "}
         <BoldLink href="#" onClick={switchToSignUp}>
           Signup
         </BoldLink>
       </MutedLink>
+      <Marginer direction={"vertical"} margin="0.2em" />
+      <MutedLink>Or</MutedLink>
+      <Marginer direction={"vertical"} margin="0.2em" />
+
+      <div id="signInDiv"></div>
     </BoxContainer>
   );
 };
