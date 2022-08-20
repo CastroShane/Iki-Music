@@ -92,6 +92,38 @@ const verifyUser = async (req, res) => {
   }
 };
 
+// If first time loggin in via Google, the data will be restore in Mongodb
+const addGoogleUser = async (req, res) => {
+  const { fullName, email, picture } = req.body;
+
+  try {
+    const newUserDetails = {
+      _id: uuidv4(),
+      fullName,
+      email,
+      picture,
+    };
+
+    const users = await getUsers();
+    const foundUser = users.find((user) => user.email === email);
+
+    if (foundUser) {
+      sendResponse(res, 404, null, "User email already exists.");
+      return;
+    } else {
+      await addUserDetails(newUserDetails);
+    }
+
+    sendResponse(
+      res,
+      201,
+      newUserDetails,
+      "Google user has been added to the user list!"
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
 // Test MongoDb
 const testDB = async (req, res) => {
   try {
@@ -110,5 +142,6 @@ module.exports = {
   getNewReleases,
   addNewUser,
   verifyUser,
+  addGoogleUser,
   testDB,
 };

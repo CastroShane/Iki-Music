@@ -164,6 +164,7 @@ const BackDrop = styled(motion.div)`
   top: -310px;
   left: -125px;
   background: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
+  z-index: 9;
 `;
 
 export default Account;

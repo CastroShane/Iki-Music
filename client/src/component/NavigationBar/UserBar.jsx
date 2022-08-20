@@ -3,10 +3,11 @@ import { useHistory } from "react-router-dom";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import styled from "styled-components";
 import { GoDash } from "react-icons/go";
+import avatar from "./assets/avatar.png";
 
 const UserBar = () => {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-  const { fullName } = currentUser;
+  const { fullName, picture } = currentUser;
 
   //Redirects to homepage whenever someone signs-out
   const history = useHistory();
@@ -24,6 +25,7 @@ const UserBar = () => {
 
   return (
     <Wrapper>
+      {picture ? <StyledImg src={picture} /> : <StyledImg src={avatar} />}
       <StyledSpan>{`Hello, ${fullName.split(" ")[0]}`}</StyledSpan>
       <Dash />
       <SignOutBtn onClick={(e) => handleSignOut(e)}>Sign Out</SignOutBtn>
@@ -38,8 +40,8 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 const StyledImg = styled.img`
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   margin: 0 10px;
 `;
