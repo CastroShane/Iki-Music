@@ -6,7 +6,6 @@ import FavoriteButton from "./FavoriteBtn";
 
 const SongCard = ({ track }) => {
   const { title, album, title_short, artist, duration, preview, id } = track;
-  console.log("track:", track);
 
   const convertDuration = (duration) => {
     let minutes = Math.floor(duration / 60);

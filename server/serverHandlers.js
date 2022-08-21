@@ -47,13 +47,19 @@ const getNewReleases = async (req, res) => {
 
 const addNewUser = async (req, res) => {
   const { fullName, email, password } = req.body;
-
+  const favorites = {
+    songs: [],
+    albums: [],
+    playlists: [],
+    artist: [],
+  };
   try {
     const newUserDetails = {
       _id: uuidv4(),
       fullName,
       email,
       password,
+      favorites,
     };
 
     const users = await getUsers();
@@ -96,12 +102,19 @@ const verifyUser = async (req, res) => {
 const addGoogleUser = async (req, res) => {
   const { fullName, email, picture } = req.body;
 
+  const favorites = {
+    songs: [],
+    albums: [],
+    playlists: [],
+    artist: [],
+  };
   try {
     const newUserDetails = {
       _id: uuidv4(),
       fullName,
       email,
       picture,
+      favorites,
     };
 
     const users = await getUsers();
@@ -124,17 +137,6 @@ const addGoogleUser = async (req, res) => {
     console.log(err);
   }
 };
-// Test MongoDb
-const testDB = async (req, res) => {
-  try {
-    const client = await startClient();
-    const db = await client.db("Iki-Music");
-    const allUsers = await db.collection("users").find().toArray();
-    sendResponse(res, 200, allUsers, "These are the users");
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 module.exports = {
   getGenres,
@@ -143,5 +145,4 @@ module.exports = {
   addNewUser,
   verifyUser,
   addGoogleUser,
-  testDB,
 };

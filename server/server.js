@@ -6,7 +6,6 @@ const {
   getGenres,
   getEditorial,
   getNewReleases,
-  testDB,
   addNewUser,
   verifyUser,
   addGoogleUser,
@@ -26,8 +25,6 @@ app
   .post("/sign-up", addNewUser)
   .post("/sign-in", verifyUser)
   .post("/google-signin", addGoogleUser)
-
-  .get("/testlang", testDB)
 
   .get("/test", (req, res) => {
     res.send("I'm working!");
