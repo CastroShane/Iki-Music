@@ -7,6 +7,7 @@ const {
   addUserDetails,
   getUsers,
   findUser,
+  updateFavorite,
 } = require("./utils.js");
 
 const getGenres = async (req, res) => {
@@ -138,6 +139,30 @@ const addGoogleUser = async (req, res) => {
   }
 };
 
+const updateFavorites = async (req, res) => {
+  try {
+    console.log(req.body);
+    const { userId, favorites } = req.body;
+
+    const users = await getUsers();
+    const foundUser = users.find((user) => user._id === userId);
+
+    if (foundUser) {
+      updateFavorite(userId, favorites);
+      return sendResponse(
+        res,
+        200,
+        favorites,
+        "User favorites has been updated!"
+      );
+    } else {
+      sendResponse(res, 404, null, "User not found!");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   getGenres,
   getEditorial,
@@ -145,4 +170,5 @@ module.exports = {
   addNewUser,
   verifyUser,
   addGoogleUser,
+  updateFavorites,
 };

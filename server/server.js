@@ -9,6 +9,7 @@ const {
   addNewUser,
   verifyUser,
   addGoogleUser,
+  updateFavorites,
 } = require("./serverHandlers");
 app
   .use(morgan("tiny"))
@@ -25,6 +26,8 @@ app
   .post("/sign-up", addNewUser)
   .post("/sign-in", verifyUser)
   .post("/google-signin", addGoogleUser)
+
+  .post("/favorites", updateFavorites)
 
   .get("/test", (req, res) => {
     res.send("I'm working!");

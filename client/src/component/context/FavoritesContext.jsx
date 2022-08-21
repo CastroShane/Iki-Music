@@ -7,7 +7,26 @@ export const FavoritesContext = createContext(null);
 export const FavoritesContextProvider = ({ children }) => {
   const { currentUser } = useContext(CurrentUserContext);
 
-  console.log(currentUser.favorites);
+  //   const fetchUpdate = async () => {
+  //     try {
+  //       const response = await fetch("/favorites", {
+  //         method: "POST",
+  //         headers: { "Content-type": "application/json" },
+  //         body: JSON.stringify({
+  //           userId: currentUser._id,
+  //           favorites: {
+  //             songs: [{ hello: "goodbye" }],
+  //           },
+  //         }),
+  //       });
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   //   useEffect(() => {
+  //   //     fetchUpdate();
+  //   //   }, []);
+
   return (
     <FavoritesContext.Provider value={{ currentUser }}>
       {children}
