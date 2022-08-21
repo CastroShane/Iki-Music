@@ -7,7 +7,7 @@ const FavoriteButton = () => {
 
   return (
     <Wrapper style={{ marginTop: "12px" }}>
-      {isLiked ? <Unlike onClick={toggle} /> : <Liked onClick={toggle} />}
+      {!isLiked ? <Unlike onClick={toggle} /> : <Liked onClick={toggle} />}
     </Wrapper>
   );
 };
