@@ -29,8 +29,10 @@ const PlayButton = ({ songUrl }) => {
 };
 
 const Wrapper = styled.div`
-  position: absolute;
-  right: 60px;
+  margin: 0 5px;
+  padding: 0px;
+
+  position: relative;
   transition: all 0.2s ease-out;
   background-color: transparent;
 

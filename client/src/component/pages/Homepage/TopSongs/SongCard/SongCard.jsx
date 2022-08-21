@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PlayButton from "./PlayButton";
 import { motion, AnimatePresence } from "framer-motion";
+import FavoriteButton from "./FavoriteBtn";
 
 const SongCard = ({ track }) => {
   const { title, album, title_short, artist, duration, preview, id } = track;
@@ -17,7 +18,6 @@ const SongCard = ({ track }) => {
   return (
     <AnimatePresence>
       <Container
-        style={{ display: "flex" }}
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
@@ -34,10 +34,14 @@ const SongCard = ({ track }) => {
               {artist.name}
             </p>
           </div>
+
           <p className="duration" style={{ marginTop: "12px" }}>
             {convertDuration(duration)}
           </p>
-          <PlayButton songUrl={preview} />
+          <div className="icons">
+            <PlayButton songUrl={preview} />
+            <FavoriteButton />
+          </div>
         </Details>
       </Container>
     </AnimatePresence>
@@ -93,5 +97,12 @@ const Details = styled.div`
     color: white;
     background: var(--default-font-color);
   }
+
+  .icons {
+    display: flex;
+    position: absolute;
+    right: 60px;
+  }
 `;
+
 export default SongCard;
