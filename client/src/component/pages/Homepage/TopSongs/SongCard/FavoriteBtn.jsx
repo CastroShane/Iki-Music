@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
 import styled from "styled-components";
-const FavoriteButton = () => {
+const FavoriteButton = ({ track }) => {
   const [isLiked, setIsLiked] = useState(false);
   const toggle = () => setIsLiked(!isLiked);
 
