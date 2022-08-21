@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+import { FcLike } from "react-icons/fc";
 import styled from "styled-components";
 const FavoriteButton = () => {
   const [isLiked, setIsLiked] = useState(false);
@@ -28,7 +29,7 @@ const Wrapper = styled.div`
 const Unlike = styled(FaRegHeart)`
   background-color: transparent;
 `;
-const Liked = styled(FaHeart)`
+const Liked = styled(FcLike)`
   background-color: transparent;
 `;
 export default FavoriteButton;
