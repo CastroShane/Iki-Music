@@ -62,7 +62,8 @@ const LoginForm = () => {
     });
 
     const data = await response.json();
-    const userData = data.data;
+    const userData = await data.data;
+    console.log("userData:", userData);
 
     if (!userData) {
       setErrorText(data.message);
@@ -71,6 +72,10 @@ const LoginForm = () => {
     } else {
       setError(false);
       setCurrentUser(userData);
+      favoritesDispatch({
+        type: "change-initial-state",
+        data: userData.favorites,
+      });
       resetFormFields();
       routeChange();
     }
