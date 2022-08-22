@@ -11,6 +11,7 @@ const {
   addGoogleUser,
   updateFavorites,
   getOneArtist,
+  getArtistAlbums,
 } = require("./serverHandlers");
 app
   .use(morgan("tiny"))
@@ -25,6 +26,8 @@ app
   .get("/editorial", getEditorial)
   .get("/new-releases", getNewReleases)
   .get("/artist/:id", getOneArtist)
+  .get("/artist/:id/albums", getArtistAlbums)
+
   .post("/sign-up", addNewUser)
   .post("/sign-in", verifyUser)
   .post("/google-signin", addGoogleUser)
