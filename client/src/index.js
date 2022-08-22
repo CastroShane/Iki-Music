@@ -4,16 +4,25 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { EditorialContextProvider } from "./component/context/EditorialContext";
 import { GenreContextProvider } from "./component/context/GenreContext";
-
+import { QueryClientProvider, QueryClient } from "react-query";
+import { CurrentUserContextProvider } from "./component/context/CurrentUserContext";
+import { FavoritesContextProvider } from "./component/context/FavoritesContext";
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <EditorialContextProvider>
-      <GenreContextProvider>
-        <App />
-      </GenreContextProvider>
-    </EditorialContextProvider>
-  </BrowserRouter>
+  <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+      <CurrentUserContextProvider>
+        <EditorialContextProvider>
+          <GenreContextProvider>
+            <FavoritesContextProvider>
+              <App />
+            </FavoritesContextProvider>
+          </GenreContextProvider>
+        </EditorialContextProvider>
+      </CurrentUserContextProvider>
+    </BrowserRouter>
+  </QueryClientProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,46 +1,57 @@
 import React from "react";
 import styled from "styled-components";
+import NewReleases from "./NewReleases/NewReleases";
 import PopularAlbums from "./PopularAlbums/PopularAlbums";
 import PopularArtists from "./PopularArtists/PopularArtists";
-import PopularGenres from "./PopularGenres/PopularGenres";
+
+import TopSongs from "./TopSongs/TopSongs";
+import TrendingPlaylists from "./TrendingPlaylists/TrendingPlaylists";
 
 const Home = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "start",
+      }}
+    >
       <PopularArtists />
       <TwoColumns>
         <LeftSide>
           <PopularAlbums />
         </LeftSide>
         <RightSide>
-          <PopularGenres />
+          <TopSongs />
         </RightSide>
       </TwoColumns>
+      <TrendingPlaylists />
+      <NewReleases />
     </div>
   );
 };
 
 const TwoColumns = styled.div`
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: 50vh;
-  border: 1px solid red;
+  width: 99%;
+  height: 80vh;
 `;
 
 const LeftSide = styled.div`
+  position: relative;
   margin: 20px;
   width: 50%;
   height: 100%;
-  border: 1px solid red;
 `;
 const RightSide = styled.div`
+  position: relative;
   margin: 20px;
-
   width: 50%;
   height: 100%;
-  border: 1px solid red;
 `;
 
 export default Home;

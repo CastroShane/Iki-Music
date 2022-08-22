@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { CurrentUserContext } from "../context/CurrentUserContext";
+import UserBar from "./UserBar";
 
 const NavBar = () => {
+  const { currentUser } = useContext(CurrentUserContext);
   //Change navBar color when scrolling
   const [color, setColor] = useState(false);
   const changeColor = () => {
@@ -29,7 +32,11 @@ const NavBar = () => {
           <NavLink to="/about">About</NavLink>
         </div>
         <div style={{ marginRight: "15px", background: "none" }}>
-          <NavLink to="/account">Login</NavLink>
+          {currentUser?.fullName ? (
+            <UserBar />
+          ) : (
+            <NavLink to="/account">Login</NavLink>
+          )}
         </div>
       </Wrapper>
     </>
@@ -50,7 +57,9 @@ const Wrapper = styled.div`
   &.changing-background {
     background-color: var(--default-font-color);
 
-    a {
+    a,
+    span,
+    button {
       color: white;
     }
   }

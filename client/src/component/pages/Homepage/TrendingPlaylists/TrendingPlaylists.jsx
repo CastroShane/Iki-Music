@@ -5,19 +5,20 @@ import EditorialContext from "../../../context/EditorialContext";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
-const PopularArtists = () => {
-  const { artists } = useContext(EditorialContext);
+const TrendingPlaylists = () => {
+  const { playlists } = useContext(EditorialContext);
+
   return (
     <Container>
       <InfoWrapper>
         <div>
-          <h2 style={{ fontSize: "2rem" }}>Popular Artists</h2>
+          <h2 style={{ fontSize: "2rem" }}>Trending Playlist</h2>
         </div>
       </InfoWrapper>
       <CardWrapper layout>
         <AnimatePresence>
-          {artists?.map((artist) => {
-            const { name, id, picture_xl } = artist;
+          {playlists?.map((playlist) => {
+            const { id, picture_xl } = playlist;
             return (
               <motion.div
                 style={{ display: "flex" }}
@@ -27,9 +28,8 @@ const PopularArtists = () => {
                 layout
                 key={id}
               >
-                <StyledLink to={`/artist/${id}`}>
-                  <img src={picture_xl} alt={name} />
-                  <p> {name}</p>
+                <StyledLink to={`/playlist/${id}`}>
+                  <img src={picture_xl} alt={picture_xl} />
                 </StyledLink>
               </motion.div>
             );
@@ -57,7 +57,7 @@ const Container = styled.div`
 `;
 const InfoWrapper = styled.div`
   padding: 15px;
-  width: 99%;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -92,5 +92,4 @@ const CardWrapper = styled.div`
     text-align: center;
   }
 `;
-
-export default PopularArtists;
+export default TrendingPlaylists;
