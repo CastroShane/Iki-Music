@@ -3,12 +3,34 @@ import styled from "styled-components";
 import { FcBookmark } from "react-icons/fc";
 import { MdBookmarkBorder } from "react-icons/md";
 import FavoritesContext from "../../../context/FavoritesContext";
+import { CurrentUserContext } from "../../../context/CurrentUserContext";
 const Banner = ({ artistState }) => {
   const { artistDetails } = artistState;
-
+  console.log("artistDetails:", artistDetails);
+  const { currentUser } = useContext(CurrentUserContext);
   const { favoritesState, favoritesDispatch } = useContext(FavoritesContext);
-  console.log("favoritesState:", favoritesState);
+  const { artists } = favoritesState;
+  console.log("artists:", artists);
+  const foundArtist = artists.find((artist) => artist.id === artistDetails.id);
 
+  console.log("foundArtist:", foundArtist);
+
+  const toggle = () => {
+    //Wont work unless someone is signedIn
+    if (currentUser.fullName) {
+      foundArtist
+        ? favoritesDispatch({
+            type: "unfollow-artist",
+            data: artistDetails.id,
+            email: currentUser.email,
+          })
+        : favoritesDispatch({
+            type: "follow-artist",
+            data: artistDetails,
+            email: currentUser.email,
+          });
+    }
+  };
   const { picture_medium, name, nb_fan } = artistDetails;
   return (
     <BannerWrapper>
@@ -16,11 +38,15 @@ const Banner = ({ artistState }) => {
       <div className="details-wrapper">
         <div className="details">
           <h1>{name}</h1>
-          <p>{nb_fan.toLocaleString("en-US")} followers</p>
+          <p>{nb_fan} followers</p>
         </div>
-        <button>
-          <MdBookmarkBorder size={30} className="icon" />
-          <span>Follow</span>
+        <button onClick={toggle}>
+          {currentUser.fullName && foundArtist ? (
+            <FcBookmark size={30} className="icon" />
+          ) : (
+            <MdBookmarkBorder size={30} className="icon" />
+          )}
+          <span>{foundArtist ? "Following" : "Follow"}</span>
         </button>
       </div>
     </BannerWrapper>

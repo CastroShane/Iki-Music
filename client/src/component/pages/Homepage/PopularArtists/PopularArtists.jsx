@@ -71,7 +71,6 @@ const CardWrapper = styled.div`
   img {
     margin-top: 10px;
     width: auto;
-    height: 100%;
     overflow: hidden;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
