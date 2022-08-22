@@ -6,14 +6,10 @@ import FavoritesContext from "../../../context/FavoritesContext";
 import { CurrentUserContext } from "../../../context/CurrentUserContext";
 const Banner = ({ artistState }) => {
   const { artistDetails } = artistState;
-  console.log("artistDetails:", artistDetails);
   const { currentUser } = useContext(CurrentUserContext);
   const { favoritesState, favoritesDispatch } = useContext(FavoritesContext);
   const { artists } = favoritesState;
-  console.log("artists:", artists);
   const foundArtist = artists.find((artist) => artist.id === artistDetails.id);
-
-  console.log("foundArtist:", foundArtist);
 
   const toggle = () => {
     //Wont work unless someone is signedIn

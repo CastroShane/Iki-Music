@@ -63,7 +63,6 @@ const LoginForm = () => {
 
     const data = await response.json();
     const userData = await data.data;
-    console.log("userData:", userData);
 
     if (!userData) {
       setErrorText(data.message);
