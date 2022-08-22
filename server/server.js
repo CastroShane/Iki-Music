@@ -6,10 +6,11 @@ const {
   getGenres,
   getEditorial,
   getNewReleases,
-  testDB,
   addNewUser,
   verifyUser,
   addGoogleUser,
+  updateFavorites,
+  getUserData,
 } = require("./serverHandlers");
 app
   .use(morgan("tiny"))
@@ -27,7 +28,7 @@ app
   .post("/sign-in", verifyUser)
   .post("/google-signin", addGoogleUser)
 
-  .get("/testlang", testDB)
+  .post("/favorites", updateFavorites)
 
   .get("/test", (req, res) => {
     res.send("I'm working!");

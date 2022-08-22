@@ -68,7 +68,8 @@ const SignUpForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
-    setError(false);
+    setError(null);
+    setErrorText("");
   };
 
   return (

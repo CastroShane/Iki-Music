@@ -7,6 +7,7 @@ const {
   addUserDetails,
   getUsers,
   findUser,
+  updateFavorite,
 } = require("./utils.js");
 
 const getGenres = async (req, res) => {
@@ -47,13 +48,19 @@ const getNewReleases = async (req, res) => {
 
 const addNewUser = async (req, res) => {
   const { fullName, email, password } = req.body;
-
+  const favorites = {
+    songs: [],
+    albums: [],
+    playlists: [],
+    artist: [],
+  };
   try {
     const newUserDetails = {
       _id: uuidv4(),
       fullName,
       email,
       password,
+      favorites,
     };
 
     const users = await getUsers();
@@ -96,19 +103,26 @@ const verifyUser = async (req, res) => {
 const addGoogleUser = async (req, res) => {
   const { fullName, email, picture } = req.body;
 
+  const favorites = {
+    songs: [],
+    albums: [],
+    playlists: [],
+    artist: [],
+  };
   try {
     const newUserDetails = {
       _id: uuidv4(),
       fullName,
       email,
       picture,
+      favorites,
     };
 
     const users = await getUsers();
     const foundUser = users.find((user) => user.email === email);
 
     if (foundUser) {
-      sendResponse(res, 404, null, "User email already exists.");
+      sendResponse(res, 200, foundUser, "User email already exists.");
       return;
     } else {
       await addUserDetails(newUserDetails);
@@ -124,13 +138,25 @@ const addGoogleUser = async (req, res) => {
     console.log(err);
   }
 };
-// Test MongoDb
-const testDB = async (req, res) => {
+
+const updateFavorites = async (req, res) => {
   try {
-    const client = await startClient();
-    const db = await client.db("Iki-Music");
-    const allUsers = await db.collection("users").find().toArray();
-    sendResponse(res, 200, allUsers, "These are the users");
+    const { email, favorites } = req.body;
+
+    const users = await getUsers();
+    const foundUser = users.find((user) => user.email === email);
+
+    if (foundUser) {
+      updateFavorite(email, favorites);
+      return sendResponse(
+        res,
+        200,
+        favorites,
+        "User favorites has been updated!"
+      );
+    } else {
+      sendResponse(res, 404, null, "User not found!");
+    }
   } catch (err) {
     console.log(err);
   }
@@ -143,5 +169,5 @@ module.exports = {
   addNewUser,
   verifyUser,
   addGoogleUser,
-  testDB,
+  updateFavorites,
 };

@@ -59,10 +59,34 @@ const findUser = async (email, password) => {
     console.log(err);
   }
 };
+
+const updateFavorite = async (email, favorites) => {
+  try {
+    const client = await startClient();
+    const db = client.db("Iki-Music");
+    const updatedFavorite = await db
+      .collection("users")
+      .updateOne({ email }, { $set: { favorites } }, (err, result) => {
+        result
+          ? console.log(
+              "Found:",
+              result.matchedCount,
+              "Updated:",
+              result.acknowledged
+            )
+          : console.log(err);
+      });
+
+    return updatedFavorite;
+  } catch (err) {
+    console.log(err);
+  }
+};
 module.exports = {
   startClient,
   sendResponse,
   getUsers,
   addUserDetails,
   findUser,
+  updateFavorite,
 };
