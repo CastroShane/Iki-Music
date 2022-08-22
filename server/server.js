@@ -10,6 +10,7 @@ const {
   verifyUser,
   addGoogleUser,
   updateFavorites,
+  getUserData,
 } = require("./serverHandlers");
 app
   .use(morgan("tiny"))

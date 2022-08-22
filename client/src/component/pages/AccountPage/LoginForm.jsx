@@ -12,6 +12,7 @@ import {
 } from "./Common";
 import Marginer from "./Margin";
 import jwt_decode from "jwt-decode";
+import FavoritesContext from "../../context/FavoritesContext";
 
 const defaultFormFields = {
   email: "",
@@ -22,6 +23,8 @@ const LoginForm = () => {
   const { email, password } = formFields;
   const { switchToSignUp } = useContext(AccountContext);
   const { setCurrentUser, error, setError } = useContext(CurrentUserContext);
+  const { favoritesDispatch } = useContext(FavoritesContext);
+
   const [errorText, setErrorText] = useState("");
 
   const resetFormFields = () => {
@@ -79,20 +82,32 @@ const LoginForm = () => {
       let userObj = jwt_decode(response.credential);
 
       const { name, picture, email } = userObj;
-
+      const favorites = {
+        songs: [],
+        albums: [],
+        playlists: [],
+        artist: [],
+      };
       const googleUserData = {
         fullName: name,
         email: email.toLowerCase(),
         picture,
+        favorites,
       };
-      console.log("googleUserData:", googleUserData);
-      setCurrentUser(googleUserData);
-      await fetch("/google-signin", {
+      const res = await fetch("/google-signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(googleUserData),
+      });
+
+      const userData = await res.json();
+
+      setCurrentUser(userData.data);
+      favoritesDispatch({
+        type: "change-initial-state",
+        data: userData.data.favorites,
       });
     };
     /* global google */

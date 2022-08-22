@@ -60,13 +60,13 @@ const findUser = async (email, password) => {
   }
 };
 
-const updateFavorite = async (userId, favorites) => {
+const updateFavorite = async (email, favorites) => {
   try {
     const client = await startClient();
     const db = client.db("Iki-Music");
     const updatedFavorite = await db
       .collection("users")
-      .updateOne({ _id: userId }, { $set: { favorites } }, (err, result) => {
+      .updateOne({ email }, { $set: { favorites } }, (err, result) => {
         result
           ? console.log(
               "Found:",

@@ -122,7 +122,7 @@ const addGoogleUser = async (req, res) => {
     const foundUser = users.find((user) => user.email === email);
 
     if (foundUser) {
-      sendResponse(res, 404, null, "User email already exists.");
+      sendResponse(res, 200, foundUser, "User email already exists.");
       return;
     } else {
       await addUserDetails(newUserDetails);
@@ -141,14 +141,13 @@ const addGoogleUser = async (req, res) => {
 
 const updateFavorites = async (req, res) => {
   try {
-    console.log(req.body);
-    const { userId, favorites } = req.body;
+    const { email, favorites } = req.body;
 
     const users = await getUsers();
-    const foundUser = users.find((user) => user._id === userId);
+    const foundUser = users.find((user) => user.email === email);
 
     if (foundUser) {
-      updateFavorite(userId, favorites);
+      updateFavorite(email, favorites);
       return sendResponse(
         res,
         200,

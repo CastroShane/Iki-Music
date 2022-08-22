@@ -8,7 +8,6 @@ import avatar from "./assets/avatar.png";
 const UserBar = () => {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const { fullName, picture } = currentUser;
-  console.log("currentUser:", currentUser);
 
   //Redirects to homepage whenever someone signs-out
   const history = useHistory();
