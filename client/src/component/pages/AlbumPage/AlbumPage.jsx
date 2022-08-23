@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 import { AlbumContext } from "../../context/AlbumContext";
+import AlbumBanner from "./Sections/AlbumBanner";
 
 const AlbumPage = () => {
   const { setAlbumId, albumState } = useContext(AlbumContext);
@@ -11,7 +13,17 @@ const AlbumPage = () => {
   }, [id, setAlbumId]);
 
   console.log(albumState);
-  return <div>AlbumPage</div>;
+  return (
+    <Container>
+      <AlbumBanner albumState={albumState} />
+    </Container>
+  );
 };
 
+const Container = styled.div`
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+`;
 export default AlbumPage;
