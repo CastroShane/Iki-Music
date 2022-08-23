@@ -41,7 +41,11 @@ const NavBar = () => {
           {currentUser?.fullName ? (
             <UserBar />
           ) : (
-            <NavLink to="/account">Login</NavLink>
+            <NavLink to="/account">
+              <button className={color ? "login-btn-white" : "login-btn"}>
+                <p>Login</p>
+              </button>
+            </NavLink>
           )}
         </div>
       </Wrapper>
@@ -76,7 +80,6 @@ const Wrapper = styled.div`
 const NavLink = styled(Link)`
   margin: 10px;
   text-decoration: none;
-  color: var(--stronger-font-color);
   background-color: transparent;
 
   img {
@@ -84,6 +87,52 @@ const NavLink = styled(Link)`
     margin: 0;
     height: 72px;
     min-width: 80px;
+  }
+
+  .login-btn {
+    padding: 0px;
+    cursor: pointer;
+    background: none rgb(255, 106, 106);
+    border: 2px none rgb(58, 77, 143);
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2;
+    height: 32px;
+    width: 119px;
+    left: 0px;
+    top: 0px;
+    font-size: 16px;
+    line-height: 1;
+    border-radius: 20px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 4px 1px;
+    transition: background 200ms ease 0s;
+    font-weight: normal;
+    text-decoration: none;
+
+    p {
+      color: rgb(255, 255, 255);
+    }
+  }
+
+  .login-btn-white {
+    padding: 0px;
+    cursor: pointer;
+    background: none white;
+    border: 2px none rgb(58, 77, 143);
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2;
+    height: 32px;
+    width: 119px;
+    left: 0px;
+    top: 0px;
+    font-size: 16px;
+    line-height: 1;
+    border-radius: 20px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 4px 1px;
+    transition: background 200ms ease 0s;
+    font-weight: normal;
+    text-decoration: none;
   }
 `;
 

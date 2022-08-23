@@ -21,6 +21,7 @@ const UserBar = () => {
     e.preventDefault();
     setCurrentUser({});
     routeChange();
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -28,7 +29,9 @@ const UserBar = () => {
       {picture ? <StyledImg src={picture} /> : <StyledImg src={avatar} />}
       <StyledSpan>{`Hello, ${fullName.split(" ")[0]}`}</StyledSpan>
       <Dash />
-      <SignOutBtn onClick={(e) => handleSignOut(e)}>Sign Out</SignOutBtn>
+      <SignOutBtn onClick={(e) => handleSignOut(e)}>
+        <p>Sign Out</p>
+      </SignOutBtn>
     </Wrapper>
   );
 };
@@ -53,13 +56,28 @@ const StyledSpan = styled.span`
 `;
 
 const SignOutBtn = styled.button`
-  margin: 5px;
-  text-decoration: none;
-  color: var(--stronger-font-color);
-  background-color: transparent;
-  border: none;
+  padding: 0px;
   cursor: pointer;
-  padding: 0;
+  background: none rgb(255, 106, 106);
+  border: 2px none rgb(58, 77, 143);
+  text-align: center;
+  box-sizing: border-box;
+  z-index: 2;
+  height: 32px;
+  width: 119px;
+  left: 0px;
+  top: 0px;
+  font-size: 16px;
+  line-height: 1;
+  border-radius: 20px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 2px 4px 1px;
+  transition: background 200ms ease 0s;
+  font-weight: normal;
+  text-decoration: none;
+
+  p {
+    color: rgb(255, 255, 255);
+  }
 `;
 
 const Dash = styled(GoDash)`
