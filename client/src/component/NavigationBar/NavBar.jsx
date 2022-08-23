@@ -81,6 +81,7 @@ const NavLink = styled(Link)`
   margin: 10px;
   text-decoration: none;
   background-color: transparent;
+  color: rgb(255, 106, 106);
 
   img {
     padding: 0px;
