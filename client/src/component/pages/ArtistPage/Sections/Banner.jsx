@@ -14,7 +14,7 @@ const Banner = ({ artistState }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const { favoritesState, favoritesDispatch } = useContext(FavoritesContext);
   const { artists } = favoritesState;
-  const foundArtist = artists.find((artist) => artist.id === artistDetails.id);
+  const foundArtist = artists?.find((artist) => artist.id === artistDetails.id);
   const toggle = () => {
     //Wont work unless someone is signedIn
     if (currentUser.fullName) {
