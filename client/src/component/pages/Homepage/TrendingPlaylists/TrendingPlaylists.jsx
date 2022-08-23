@@ -60,7 +60,6 @@ const InfoWrapper = styled.div`
   width: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 `;
 const CardWrapper = styled.div`
   display: flex;
