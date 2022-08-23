@@ -111,7 +111,6 @@ const getAlbum = async (req, res) => {
   try {
     const response = await fetch(url);
     const albumData = await response.json();
-    console.log("albumData:", albumData.tracks);
     sendResponse(res, 200, albumData);
     return;
   } catch (err) {

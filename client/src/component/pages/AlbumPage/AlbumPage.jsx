@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { AlbumContext } from "../../context/AlbumContext";
 import AlbumBanner from "./Sections/AlbumBanner";
+import AlbumSongs from "./Sections/AlbumSongs/AlbumSongs";
 
 const AlbumPage = () => {
   const { setAlbumId, albumState } = useContext(AlbumContext);
@@ -12,10 +13,10 @@ const AlbumPage = () => {
     window.scrollTo(0, 0);
   }, [id, setAlbumId]);
 
-  console.log(albumState);
   return (
     <Container>
       <AlbumBanner albumState={albumState} />
+      <AlbumSongs albumState={albumState} />
     </Container>
   );
 };

@@ -10,7 +10,6 @@ const numSeparator = (num) => {
   return new Intl.NumberFormat().format(num);
 };
 const AlbumBanner = ({ albumState }) => {
-  console.log("albumState:", albumState);
   const { currentUser } = useContext(CurrentUserContext);
   const { favoritesState, favoritesDispatch } = useContext(FavoritesContext);
   const { albums } = favoritesState;
@@ -31,8 +30,18 @@ const AlbumBanner = ({ albumState }) => {
           });
     }
   };
-  const { cover_xl, title, artist, fans, tracks, genres } = albumState;
+  const { cover_xl, title, artist, fans, tracks, genres, nb_tracks, duration } =
+    albumState;
+  console.log("albumState:", albumState);
   const fanNum = numSeparator(fans);
+
+  const convertTime = (num) => {
+    const hrs = Math.floor(num / 3600);
+    const mins = Math.floor((num % 3600) / 60);
+    if (hrs === 0) return `${mins} m`;
+    return `${hrs} h ${mins} m`;
+  };
+
   return (
     <BannerWrapper
       style={{
@@ -51,6 +60,9 @@ const AlbumBanner = ({ albumState }) => {
               <h1>{title}</h1>
               <p>{artist.name}</p>
               <p>{fanNum} followers</p>
+              <p>
+                {nb_tracks} songs | {convertTime(duration)}
+              </p>
             </div>
             <button onClick={toggle}>
               {currentUser.fullName && foundAlbum ? (

@@ -83,7 +83,7 @@ const NavLink = styled(Link)`
     padding: 0px;
     margin: 0;
     height: 72px;
-    width: auto;
+    min-width: 80px;
   }
 `;
 
