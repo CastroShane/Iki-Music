@@ -34,7 +34,15 @@ const AlbumBanner = ({ albumState }) => {
   const { cover_xl, title, artist, fans, tracks, genres } = albumState;
   const fanNum = numSeparator(fans);
   return (
-    <BannerWrapper style={{ backgroundImage: `url(${cover_xl})` }}>
+    <BannerWrapper
+      style={{
+        backgroundImage: `linear-gradient(
+            0deg,
+            rgb(220, 220, 220, 0.3),
+            rgb(220, 220, 220, 0.3)
+          ), url(${cover_xl})`,
+      }}
+    >
       <img src={artist.picture_medium} />
       <div className="details-wrapper">
         <div className="details">
@@ -48,7 +56,7 @@ const AlbumBanner = ({ albumState }) => {
           ) : (
             <MdBookmarkBorder size={30} className="icon" />
           )}
-          <span>{foundAlbum ? "Following" : "Follow"}</span>
+          <span>{foundAlbum ? "Liked" : "Like"}</span>
         </button>
       </div>
     </BannerWrapper>

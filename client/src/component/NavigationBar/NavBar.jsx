@@ -58,7 +58,7 @@ const Wrapper = styled.div`
   align-items: center;
   font-size: 18px;
   justify-content: space-between;
-  height: 60px;
+  height: 72px;
 
   &.changing-background {
     background-color: var(--default-font-color);
@@ -82,6 +82,8 @@ const NavLink = styled(Link)`
   img {
     padding: 0px;
     margin: 0;
+    height: 72px;
+    width: auto;
   }
 `;
 
