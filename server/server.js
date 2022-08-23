@@ -10,7 +10,10 @@ const {
   verifyUser,
   addGoogleUser,
   updateFavorites,
-  getUserData,
+  getOneArtist,
+  getArtistAlbums,
+  getArtistRelated,
+  getArtistTopSongs,
 } = require("./serverHandlers");
 app
   .use(morgan("tiny"))
@@ -24,6 +27,11 @@ app
   .get("/all-genres", getGenres)
   .get("/editorial", getEditorial)
   .get("/new-releases", getNewReleases)
+  .get("/artist/:id", getOneArtist)
+  .get("/artist/:id/albums", getArtistAlbums)
+  .get("/artist/:id/related", getArtistRelated)
+  .get("/artist/:id/top", getArtistTopSongs)
+
   .post("/sign-up", addNewUser)
   .post("/sign-in", verifyUser)
   .post("/google-signin", addGoogleUser)

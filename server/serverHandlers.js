@@ -46,6 +46,61 @@ const getNewReleases = async (req, res) => {
   }
 };
 
+const getOneArtist = async (req, res) => {
+  // This method returns data about the artist
+  const { id } = req.params;
+  const url = `https://api.deezer.com/artist/${id}`;
+  try {
+    const response = await fetch(url);
+    const artistData = await response.json();
+    sendResponse(res, 200, artistData);
+    return;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getArtistAlbums = async (req, res) => {
+  // This method returns the artist's albums
+  const { id } = req.params;
+  const url = `https://api.deezer.com/artist/${id}/albums`;
+  try {
+    const response = await fetch(url);
+    const artistData = await response.json();
+    sendResponse(res, 200, artistData.data);
+    return;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getArtistRelated = async (req, res) => {
+  // This method returns the artist's related
+  const { id } = req.params;
+  const url = `https://api.deezer.com/artist/${id}/related`;
+  try {
+    const response = await fetch(url);
+    const artistData = await response.json();
+    sendResponse(res, 200, artistData.data);
+    return;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getArtistTopSongs = async (req, res) => {
+  // This method returns the artist's top songs
+  const { id } = req.params;
+  const url = `https://api.deezer.com/artist/${id}/top`;
+  try {
+    const response = await fetch(url);
+    const artistData = await response.json();
+    sendResponse(res, 200, artistData.data);
+    return;
+  } catch (err) {
+    console.log(err);
+  }
+};
 const addNewUser = async (req, res) => {
   const { fullName, email, password } = req.body;
   const favorites = {
@@ -170,4 +225,8 @@ module.exports = {
   verifyUser,
   addGoogleUser,
   updateFavorites,
+  getOneArtist,
+  getArtistAlbums,
+  getArtistRelated,
+  getArtistTopSongs,
 };

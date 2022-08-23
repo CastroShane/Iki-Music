@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import UserBar from "./UserBar";
+import logo1 from "./assets/1.png";
+import logo2 from "./assets/2.png";
 
 const NavBar = () => {
   const { currentUser } = useContext(CurrentUserContext);
@@ -22,11 +24,15 @@ const NavBar = () => {
           style={{
             display: "flex",
             justifyContent: "space-between",
+            alignItems: "center",
             width: "20%",
             background: "none",
           }}
         >
-          <NavLink to="/">Home</NavLink>
+          {/* <NavLink to="/">Home</NavLink> */}
+          <NavLink to="/">
+            <img src={color ? logo1 : logo2} alt="ikimusic" />
+          </NavLink>
           <NavLink to="/explore">Explore</NavLink>
           <NavLink to="/podcasts">Podcasts</NavLink>
           <NavLink to="/about">About</NavLink>
@@ -72,6 +78,11 @@ const NavLink = styled(Link)`
   text-decoration: none;
   color: var(--stronger-font-color);
   background-color: transparent;
+
+  img {
+    padding: 0px;
+    margin: 0;
+  }
 `;
 
 export default NavBar;
