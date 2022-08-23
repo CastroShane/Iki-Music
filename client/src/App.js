@@ -15,6 +15,7 @@ import AlbumPage from "./component/pages/AlbumPage/AlbumPage";
 import PlaylistPage from "./component/pages/PlaylistPage/PlaylistPage";
 import { useContext } from "react";
 import { CurrentUserContext } from "./component/context/CurrentUserContext";
+import GenrePage from "./component/pages/GenrePage/GenrePage";
 
 const App = () => {
   const { currentUser } = useContext(CurrentUserContext);
@@ -47,7 +48,9 @@ const App = () => {
             <Route exact path="/playlist/:id">
               <PlaylistPage />
             </Route>
-
+            <Route exact path="/genre/:id">
+              <GenrePage />
+            </Route>
             {/* <Route exact path="/for-you" component={ForYou}></Route> */}
           </Switch>
         </Router>
