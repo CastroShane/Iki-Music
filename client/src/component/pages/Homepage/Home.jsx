@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import NewReleases from "./NewReleases/NewReleases";
 import PopularAlbums from "./PopularAlbums/PopularAlbums";
@@ -8,6 +8,9 @@ import TopSongs from "./TopSongs/TopSongs";
 import TrendingPlaylists from "./TrendingPlaylists/TrendingPlaylists";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div
       style={{

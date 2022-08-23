@@ -4,7 +4,6 @@ import ArtistSongCard from "./ArtistSongCard";
 
 const TopSongs = ({ artistState }) => {
   const { artistTopsSongs } = artistState;
-  console.log("artistTopsSongs:", artistTopsSongs);
 
   return (
     <Wrapper>
