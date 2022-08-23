@@ -118,19 +118,19 @@ const getAlbum = async (req, res) => {
   }
 };
 
-// const getAlbumsSongs = async (req, res) => {
-//   // This method returns the albums's songs
-//   const { id } = req.params;
-//   const url = `https://api.deezer.com/album/${id}/tracks`;
-//   try {
-//     const response = await fetch(url);
-//     const albumData = await response.json();
-//     sendResponse(res, 200, albumData.data);
-//     return;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+const getGenreArtists = async (req, res) => {
+  // This method returns the genre's artist
+  const { id } = req.params;
+  const url = `https://api.deezer.com/genre/${id}/artists`;
+  try {
+    const response = await fetch(url);
+    const albumData = await response.json();
+    sendResponse(res, 200, albumData.data);
+    return;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 /* -------- MONGODB --------   */
 const addNewUser = async (req, res) => {
@@ -262,5 +262,5 @@ module.exports = {
   getArtistRelated,
   getArtistTopSongs,
   getAlbum,
-  // getAlbumsSongs,
+  getGenreArtists,
 };
