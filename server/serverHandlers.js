@@ -10,6 +10,8 @@ const {
   updateFavorite,
 } = require("./utils.js");
 
+/* -------- API Fetches --------   */
+
 const getGenres = async (req, res) => {
   // Returns all Genres
   const url = "https://api.deezer.com/genre";
@@ -101,6 +103,36 @@ const getArtistTopSongs = async (req, res) => {
     console.log(err);
   }
 };
+
+const getAlbum = async (req, res) => {
+  // This method returns the albums's details
+  const { id } = req.params;
+  const url = `https://api.deezer.com/album/${id}`;
+  try {
+    const response = await fetch(url);
+    const albumData = await response.json();
+    sendResponse(res, 200, albumData);
+    return;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+// const getAlbumsSongs = async (req, res) => {
+//   // This method returns the albums's songs
+//   const { id } = req.params;
+//   const url = `https://api.deezer.com/album/${id}/tracks`;
+//   try {
+//     const response = await fetch(url);
+//     const albumData = await response.json();
+//     sendResponse(res, 200, albumData.data);
+//     return;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+/* -------- MONGODB --------   */
 const addNewUser = async (req, res) => {
   const { fullName, email, password } = req.body;
   const favorites = {
@@ -229,4 +261,6 @@ module.exports = {
   getArtistAlbums,
   getArtistRelated,
   getArtistTopSongs,
+  getAlbum,
+  // getAlbumsSongs,
 };

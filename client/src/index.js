@@ -8,6 +8,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { CurrentUserContextProvider } from "./component/context/CurrentUserContext";
 import { FavoritesContextProvider } from "./component/context/FavoritesContext";
 import { ArtistContextProvider } from "./component/context/ArtistContext";
+import { AlbumContextProvider } from "./component/context/AlbumContext";
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -19,7 +20,9 @@ root.render(
           <GenreContextProvider>
             <FavoritesContextProvider>
               <ArtistContextProvider>
-                <App />
+                <AlbumContextProvider>
+                  <App />
+                </AlbumContextProvider>
               </ArtistContextProvider>
             </FavoritesContextProvider>
           </GenreContextProvider>
