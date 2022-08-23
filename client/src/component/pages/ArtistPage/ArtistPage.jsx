@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ArtistContext } from "../../context/ArtistContext";
 import Banner from "./Sections/Banner";
+import TopSongs from "./Sections/Topsongs/TopSongs";
 
 const ArtistPage = () => {
   const { setArtistId, artistState } = useContext(ArtistContext);
@@ -10,9 +11,11 @@ const ArtistPage = () => {
   useEffect(() => {
     setArtistId(id);
   }, [id, setArtistId]);
+
   return (
     <Container>
       <Banner artistState={artistState} />
+      <TopSongs artistState={artistState} />
     </Container>
   );
 };
@@ -22,7 +25,7 @@ const Container = styled.div`
   height: 90vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   /* justify-content: center; */
 `;
 

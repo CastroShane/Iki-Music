@@ -4,13 +4,17 @@ import { FcBookmark } from "react-icons/fc";
 import { MdBookmarkBorder } from "react-icons/md";
 import FavoritesContext from "../../../context/FavoritesContext";
 import { CurrentUserContext } from "../../../context/CurrentUserContext";
+
+//Add commas to the number of fans
+const numSeparator = (num) => {
+  return new Intl.NumberFormat().format(num);
+};
 const Banner = ({ artistState }) => {
   const { artistDetails } = artistState;
   const { currentUser } = useContext(CurrentUserContext);
   const { favoritesState, favoritesDispatch } = useContext(FavoritesContext);
   const { artists } = favoritesState;
   const foundArtist = artists.find((artist) => artist.id === artistDetails.id);
-
   const toggle = () => {
     //Wont work unless someone is signedIn
     if (currentUser.fullName) {
@@ -28,13 +32,14 @@ const Banner = ({ artistState }) => {
     }
   };
   const { picture_medium, name, nb_fan } = artistDetails;
+  const fanNum = numSeparator(nb_fan);
   return (
     <BannerWrapper>
       <img src={picture_medium} />
       <div className="details-wrapper">
         <div className="details">
           <h1>{name}</h1>
-          <p>{nb_fan} followers</p>
+          <p>{fanNum} followers</p>
         </div>
         <button onClick={toggle}>
           {currentUser.fullName && foundArtist ? (
