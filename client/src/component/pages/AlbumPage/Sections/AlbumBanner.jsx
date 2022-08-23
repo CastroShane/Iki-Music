@@ -32,7 +32,6 @@ const AlbumBanner = ({ albumState }) => {
   };
   const { cover_xl, title, artist, fans, tracks, genres, nb_tracks, duration } =
     albumState;
-  console.log("albumState:", albumState);
   const fanNum = numSeparator(fans);
 
   const convertTime = (num) => {
