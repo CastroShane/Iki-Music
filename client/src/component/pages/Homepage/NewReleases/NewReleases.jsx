@@ -32,8 +32,8 @@ const NewReleases = () => {
       <CardWrapper layout>
         {!isLoading && (
           <AnimatePresence>
-            {newReleases?.map((playlist) => {
-              const { id, cover_medium, title } = playlist;
+            {newReleases?.map((album) => {
+              const { id, cover_medium, title } = album;
               return (
                 <motion.div
                   style={{ display: "flex" }}
@@ -43,7 +43,7 @@ const NewReleases = () => {
                   layout
                   key={id}
                 >
-                  <StyledLink to={`/playlist/${id}`}>
+                  <StyledLink to={`/album/${id}`}>
                     <img src={cover_medium} alt={title} />
                     <p>{title}</p>
                   </StyledLink>

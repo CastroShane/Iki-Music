@@ -43,22 +43,26 @@ const AlbumBanner = ({ albumState }) => {
           ), url(${cover_xl})`,
       }}
     >
-      <img src={artist.picture_medium} />
-      <div className="details-wrapper">
-        <div className="details">
-          <h1>{title}</h1>
-          <p>{artist.name}</p>
-          <p>{fanNum} followers</p>
-        </div>
-        <button onClick={toggle}>
-          {currentUser.fullName && foundAlbum ? (
-            <FcBookmark size={30} className="icon" />
-          ) : (
-            <MdBookmarkBorder size={30} className="icon" />
-          )}
-          <span>{foundAlbum ? "Liked" : "Like"}</span>
-        </button>
-      </div>
+      {artist && (
+        <>
+          <img src={artist.picture_medium} />
+          <div className="details-wrapper">
+            <div className="details">
+              <h1>{title}</h1>
+              <p>{artist.name}</p>
+              <p>{fanNum} followers</p>
+            </div>
+            <button onClick={toggle}>
+              {currentUser.fullName && foundAlbum ? (
+                <FcBookmark size={30} className="icon" />
+              ) : (
+                <MdBookmarkBorder size={30} className="icon" />
+              )}
+              <span>{foundAlbum ? "Liked" : "Like"}</span>
+            </button>
+          </div>
+        </>
+      )}
     </BannerWrapper>
   );
 };
