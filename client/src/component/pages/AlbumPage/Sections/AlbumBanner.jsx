@@ -20,12 +20,12 @@ const AlbumBanner = ({ albumState }) => {
     if (currentUser.fullName) {
       foundAlbum
         ? favoritesDispatch({
-            type: "unfollow-artist",
+            type: "unlike-album",
             data: albumState.id,
             email: currentUser.email,
           })
         : favoritesDispatch({
-            type: "follow-artist",
+            type: "like-album",
             data: albumState,
             email: currentUser.email,
           });
