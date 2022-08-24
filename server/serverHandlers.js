@@ -146,6 +146,48 @@ const getGenreArtists = async (req, res) => {
   }
 };
 
+const searchForArtist = async (req, res) => {
+  // This method returns the search results for artists
+  const { q } = req.query;
+  const url = `https://api.deezer.com/search?q=artist:${q}`;
+  try {
+    const response = await fetch(url);
+    const albumData = await response.json();
+    sendResponse(res, 200, albumData.data);
+    return;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const searchForAlbums = async (req, res) => {
+  // This method returns the search results for albums
+  const { q } = req.query;
+  const url = `https://api.deezer.com/search?q=album:${q}`;
+  try {
+    const response = await fetch(url);
+    const albumData = await response.json();
+    sendResponse(res, 200, albumData.data);
+    return;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const searchForSongs = async (req, res) => {
+  // This method returns the search results for songs
+  const { q } = req.query;
+  const url = `https://api.deezer.com/search?q=track:${q}`;
+  try {
+    const response = await fetch(url);
+    const albumData = await response.json();
+    sendResponse(res, 200, albumData.data);
+    return;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 /* -------- MONGODB --------   */
 const addNewUser = async (req, res) => {
   const { fullName, email, password } = req.body;
@@ -278,4 +320,7 @@ module.exports = {
   getAlbum,
   getGenreArtists,
   getPlaylist,
+  searchForArtist,
+  searchForAlbums,
+  searchForSongs,
 };
