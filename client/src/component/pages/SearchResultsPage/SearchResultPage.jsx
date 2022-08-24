@@ -9,15 +9,14 @@ const SearchResultPage = () => {
   const { searchState, userQuery } = useContext(SearchContext);
 
   const { songsResult, artistResult, albumsResult } = searchState;
+
+  const total = songsResult.length + artistResult.length + albumsResult.length;
   return (
     <Container>
       <h1 className="title">
         Search results for: <span>{userQuery}</span>
       </h1>
-      <p>
-        About {songsResult.length + artistResult.length + albumsResult.length}{" "}
-        results
-      </p>
+      <p>About {total} results</p>
       {searchState && (
         <>
           {songsResult.length > 0 && (
@@ -30,6 +29,8 @@ const SearchResultPage = () => {
           {albumsResult.length > 0 && (
             <AlbumsResults albums={searchState?.albumsResult} />
           )}
+
+          {total === 0 && <h2>No results found!</h2>}
         </>
       )}
     </Container>
