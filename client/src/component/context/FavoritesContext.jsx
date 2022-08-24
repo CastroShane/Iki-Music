@@ -38,7 +38,7 @@ const FavoritesReducer = (state, action) => {
     case "remove-favorite-song": {
       const newState = {
         ...state,
-        songs: [...songs.filter((song) => song.id !== action.data)],
+        songs: [...songs?.filter((song) => song.id !== action.data)],
       };
       updateUserFavorites(action.email, newState);
       return newState;
@@ -54,7 +54,7 @@ const FavoritesReducer = (state, action) => {
     case "unfollow-artist": {
       const newState = {
         ...state,
-        artists: [...artists.filter((artist) => artist.id !== action.data)],
+        artists: [...artists?.filter((artist) => artist.id !== action.data)],
       };
       updateUserFavorites(action.email, newState);
       return newState;
@@ -71,7 +71,7 @@ const FavoritesReducer = (state, action) => {
     case "unlike-album": {
       const newState = {
         ...state,
-        albums: [...albums.filter((album) => album.id !== action.data)],
+        albums: [...albums?.filter((album) => album.id !== action.data)],
       };
       updateUserFavorites(action.email, newState);
       return newState;
