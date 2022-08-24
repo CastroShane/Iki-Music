@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import FavoritesContext from "../../context/FavoritesContext";
+import UserAlbums from "./Sections/UserAlbums/UserAlbums";
 import UserSongs from "./Sections/UserSongs/UserSongs";
 
 const UserLibrary = () => {
@@ -8,12 +9,14 @@ const UserLibrary = () => {
   console.log("favoritesState:", favoritesState);
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [favoritesState]);
-  const { songs } = favoritesState;
+    console.log("I've refresh");
+  }, []);
+  const { songs, albums } = favoritesState;
   return (
     <Container>
       <h1 className="title">Your Library</h1>
-      <UserSongs songs={songs} />
+      {songs && <UserSongs songs={songs} />}
+      <UserAlbums albums={albums} />
     </Container>
   );
 };

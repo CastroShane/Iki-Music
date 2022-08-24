@@ -57,7 +57,11 @@ const App = () => {
               <PlaylistPage />
             </Route>
             <Route exact path="/library">
-              <UserLibrary />
+              {!currentUser?.fullName ? (
+                <Redirect to={{ pathname: "/" }} />
+              ) : (
+                <UserLibrary />
+              )}
             </Route>
             {/* <Route exact path="/for-you" component={ForYou}></Route> */}
           </Switch>
