@@ -118,6 +118,20 @@ const getAlbum = async (req, res) => {
   }
 };
 
+const getPlaylist = async (req, res) => {
+  // This method returns the playlist's details
+  const { id } = req.params;
+  const url = `https://api.deezer.com/playlist/${id}`;
+  try {
+    const response = await fetch(url);
+    const albumData = await response.json();
+    sendResponse(res, 200, albumData);
+    return;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const getGenreArtists = async (req, res) => {
   // This method returns the genre's artist
   const { id } = req.params;
@@ -263,4 +277,5 @@ module.exports = {
   getArtistTopSongs,
   getAlbum,
   getGenreArtists,
+  getPlaylist,
 };

@@ -51,6 +51,10 @@ const App = () => {
             <Route exact path="/genre/:id">
               <GenrePage />
             </Route>
+            <Route exact path="/podcasts">
+              {/* temporary since playlist API needs token for this one */}
+              <PlaylistPage />
+            </Route>
             {/* <Route exact path="/for-you" component={ForYou}></Route> */}
           </Switch>
         </Router>
