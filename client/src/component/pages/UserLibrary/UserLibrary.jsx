@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import FavoritesContext from "../../context/FavoritesContext";
 import UserAlbums from "./Sections/UserAlbums/UserAlbums";
+import UserArtists from "./Sections/UserArtists/UserArtists";
 import UserSongs from "./Sections/UserSongs/UserSongs";
 
 const UserLibrary = () => {
@@ -11,12 +12,13 @@ const UserLibrary = () => {
     window.scrollTo(0, 0);
     console.log("I've refresh");
   }, []);
-  const { songs, albums } = favoritesState;
+  const { songs, albums, artists } = favoritesState;
   return (
     <Container>
       <h1 className="title">Your Library</h1>
       {songs && <UserSongs songs={songs} />}
       <UserAlbums albums={albums} />
+      <UserArtists artists={artists} />
     </Container>
   );
 };
