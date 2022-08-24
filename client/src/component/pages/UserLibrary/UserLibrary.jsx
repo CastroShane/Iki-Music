@@ -7,10 +7,8 @@ import UserSongs from "./Sections/UserSongs/UserSongs";
 
 const UserLibrary = () => {
   const { favoritesState } = useContext(FavoritesContext);
-  console.log("favoritesState:", favoritesState);
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log("I've refresh");
   }, []);
   const { songs, albums, artists } = favoritesState;
   return (
