@@ -17,6 +17,9 @@ const {
   getAlbum,
   getGenreArtists,
   getPlaylist,
+  searchForArtist,
+  searchForAlbums,
+  searchForSongs,
 } = require("./serverHandlers");
 app
   .use(morgan("tiny"))
@@ -37,6 +40,9 @@ app
   .get("/genre/:id/artists", getGenreArtists)
   .get("/album/:id", getAlbum)
   .get("/playlist/:id", getPlaylist)
+  .get("/search-artist", searchForArtist)
+  .get("/search-albums", searchForAlbums)
+  .get("/search-songs", searchForSongs)
 
   .post("/sign-up", addNewUser)
   .post("/sign-in", verifyUser)

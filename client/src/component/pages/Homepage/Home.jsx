@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import HomeBanner from "./Banner/HomeBanner";
 import NewReleases from "./NewReleases/NewReleases";
 import PopularAlbums from "./PopularAlbums/PopularAlbums";
 import PopularArtists from "./PopularArtists/PopularArtists";
@@ -20,6 +21,7 @@ const Home = () => {
         alignItems: "start",
       }}
     >
+      <HomeBanner />
       <PopularArtists />
       <TwoColumns>
         <LeftSide>

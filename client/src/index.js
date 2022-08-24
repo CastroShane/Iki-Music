@@ -9,6 +9,7 @@ import { CurrentUserContextProvider } from "./component/context/CurrentUserConte
 import { FavoritesContextProvider } from "./component/context/FavoritesContext";
 import { ArtistContextProvider } from "./component/context/ArtistContext";
 import { AlbumContextProvider } from "./component/context/AlbumContext";
+import { SearchContextProvider } from "./component/context/SearchContext";
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -21,7 +22,9 @@ root.render(
             <FavoritesContextProvider>
               <ArtistContextProvider>
                 <AlbumContextProvider>
-                  <App />
+                  <SearchContextProvider>
+                    <App />
+                  </SearchContextProvider>
                 </AlbumContextProvider>
               </ArtistContextProvider>
             </FavoritesContextProvider>
