@@ -1,22 +1,40 @@
 import React from "react";
 import styled from "styled-components";
-import { useContext } from "react";
-import EditorialContext from "../../../context/EditorialContext";
+
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+const RelatedArtists = ({ artistState }) => {
+  const { artistRelated } = artistState;
 
-const PopularArtists = () => {
-  const { artists } = useContext(EditorialContext);
+  let slider = document.querySelector(".related-artists-container");
+
+  const btnPrev = () => {
+    if (slider) {
+      let width = slider.clientWidth;
+      slider.scrollLeft = slider.scrollLeft - width;
+    }
+  };
+  const btnNext = () => {
+    if (slider) {
+      let width = slider.clientWidth;
+      slider.scrollLeft = slider.scrollLeft + width;
+    }
+  };
   return (
     <Container>
       <InfoWrapper>
-        <div>
-          <h2 style={{ fontSize: "2rem" }}>Popular Artists</h2>
+        <div className="info">
+          <h2 style={{ fontSize: "2rem" }}>Related Artists</h2>
+          <div className="icons">
+            <FaArrowLeft size={35} onClick={btnPrev} />
+            <FaArrowRight size={35} onClick={btnNext} />
+          </div>
         </div>
       </InfoWrapper>
-      <CardWrapper layout>
+      <CardWrapper layout className="related-artists-container">
         <AnimatePresence>
-          {artists?.map((artist) => {
+          {artistRelated?.map((artist) => {
             const { name, id, picture_xl } = artist;
             return (
               <motion.div
@@ -60,12 +78,27 @@ const InfoWrapper = styled.div`
   width: 99%;
   display: flex;
   align-items: center;
+
+  h2 {
+  }
+  .icons {
+    display: flex;
+    width: 5%;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 `;
 const CardWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
   padding: 0 15px 0 15px;
   height: 100%;
+  overflow: hidden;
 
   img {
     margin-top: 10px;
@@ -91,4 +124,4 @@ const CardWrapper = styled.div`
   }
 `;
 
-export default PopularArtists;
+export default RelatedArtists;

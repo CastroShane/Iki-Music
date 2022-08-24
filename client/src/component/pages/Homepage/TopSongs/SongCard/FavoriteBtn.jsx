@@ -11,11 +11,11 @@ const FavoriteButton = ({ track }) => {
   const { songs } = favoritesState;
   const foundSong = songs.find((song) => song.id === track.id);
 
-  const [isLiked, setIsLiked] = useState(false);
+  // const [isLiked, setIsLiked] = useState(false);
   const toggle = () => {
     //Wont work unless someone is signedIn
     if (currentUser.fullName) {
-      setIsLiked(!isLiked);
+      // setIsLiked(!isLiked);
       foundSong
         ? favoritesDispatch({
             type: "remove-favorite-song",

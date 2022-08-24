@@ -1,33 +1,27 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { GenreContext } from "../../context/GenreContext";
-import GenreFilter from "./GenreFilter";
 import { motion, AnimatePresence } from "framer-motion";
 
-const GenreContainer = () => {
-  const { loaded, filteredGenre } = useContext(GenreContext);
-
+const ArtistsContainer = ({ isLoading, data }) => {
   return (
     <>
       <Wrapper>
-        <GenreFilter />
         <CardsWrapper layout>
           <AnimatePresence>
-            {loaded &&
-              filteredGenre.map((data) => {
+            {!isLoading &&
+              data?.map((artist) => {
                 return (
                   <motion.div
                     animate={{ opacity: 1 }}
                     initial={{ opacity: 0 }}
                     exit={{ opacity: 0 }}
                     layout
-                    key={data.id}
+                    key={artist.id}
                   >
-                    <StyledLink to={`/genre/${data.id}`}>
+                    <StyledLink to={`/artist/${artist.id}`}>
                       <Card>
-                        <Img src={data.picture_medium} alt={data.name} />
-                        <StyledDiv>{data.name}</StyledDiv>
+                        <Img src={artist.picture_medium} alt={artist.name} />
+                        <StyledDiv>{artist.name}</StyledDiv>
                       </Card>
                     </StyledLink>
                   </motion.div>
@@ -44,6 +38,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
 `;
 
 const CardsWrapper = styled(motion.div)`
@@ -78,14 +73,14 @@ const StyledLink = styled(Link)`
 const StyledDiv = styled.div`
   position: relative;
   text-align: center;
-  top: -18px;
+  top: -12px;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 500;
   z-index: 999;
   color: var(--default-font-color);
   background: rgb(255, 255, 255, 0.8);
   border-bottom-left-radius: 15px;
 `;
-export default GenreContainer;
+export default ArtistsContainer;

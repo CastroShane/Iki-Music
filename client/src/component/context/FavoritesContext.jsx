@@ -24,7 +24,7 @@ const FavoritesReducer = (state, action) => {
     }
   };
 
-  const { songs } = state;
+  const { songs, artists, albums } = state;
 
   switch (action.type) {
     case "add-favorite-song": {
@@ -43,7 +43,39 @@ const FavoritesReducer = (state, action) => {
       updateUserFavorites(action.email, newState);
       return newState;
     }
+    case "follow-artist": {
+      const newState = {
+        ...state,
+        artists: [...artists, action.data],
+      };
+      updateUserFavorites(action.email, newState);
+      return newState;
+    }
+    case "unfollow-artist": {
+      const newState = {
+        ...state,
+        artists: [...artists.filter((artist) => artist.id !== action.data)],
+      };
+      updateUserFavorites(action.email, newState);
+      return newState;
+    }
 
+    case "like-album": {
+      const newState = {
+        ...state,
+        albums: [...albums, action.data],
+      };
+      updateUserFavorites(action.email, newState);
+      return newState;
+    }
+    case "unlike-album": {
+      const newState = {
+        ...state,
+        albums: [...albums.filter((album) => album.id !== action.data)],
+      };
+      updateUserFavorites(action.email, newState);
+      return newState;
+    }
     case "change-initial-state": {
       const newState = {
         ...action.data,
