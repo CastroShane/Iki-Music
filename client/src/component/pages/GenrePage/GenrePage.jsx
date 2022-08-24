@@ -20,7 +20,6 @@ const GenrePage = () => {
 
   const results = useQuery("get-genre-artists", fetchGenreArtists);
   const { isLoading, data } = results;
-  console.log("results:", results);
 
   return (
     <Container>

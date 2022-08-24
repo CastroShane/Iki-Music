@@ -16,7 +16,7 @@ const ArtistsContainer = ({ isLoading, data }) => {
                     initial={{ opacity: 0 }}
                     exit={{ opacity: 0 }}
                     layout
-                    key={data.id}
+                    key={artist.id}
                   >
                     <StyledLink to={`/artist/${artist.id}`}>
                       <Card>
