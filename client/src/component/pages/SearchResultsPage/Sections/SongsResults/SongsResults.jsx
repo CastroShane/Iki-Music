@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   width: 95%;
 
   h2 {
-    font-size: 40px;
+    font-size: 30px;
     padding-top: 5px;
     padding-bottom: 12px;
   }

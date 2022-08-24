@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import SearchContext from "../../../context/SearchContext";
 const fetchArtist = async (userQuery, dispatcher) => {
   try {
-    const response = await fetch(`/search-artist/?=${userQuery}`);
+    const response = await fetch(`/search-artist/?q=${userQuery}`);
     const data = await response.json();
     dispatcher({ type: "search-artist", data: data.data });
   } catch (err) {
@@ -15,7 +15,7 @@ const fetchArtist = async (userQuery, dispatcher) => {
 
 const fetchAlbum = async (userQuery, dispatcher) => {
   try {
-    const response = await fetch(`/search-albums/?=${userQuery}`);
+    const response = await fetch(`/search-albums/?q=${userQuery}`);
     const data = await response.json();
     dispatcher({ type: "search-albums", data: data.data });
   } catch (err) {
@@ -25,7 +25,7 @@ const fetchAlbum = async (userQuery, dispatcher) => {
 
 const fetchSongs = async (userQuery, dispatcher) => {
   try {
-    const response = await fetch(`/search-songs/?=${userQuery}`);
+    const response = await fetch(`/search-songs/?q=${userQuery}`);
     const data = await response.json();
     dispatcher({ type: "search-songs", data: data.data });
   } catch (err) {
@@ -41,13 +41,12 @@ const SearchBar = () => {
     setUserQuery(itemSearched);
   };
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
+    await fetchArtist(userQuery, searchDispatch);
+    await fetchAlbum(userQuery, searchDispatch);
+    await fetchSongs(userQuery, searchDispatch);
     setUserQuery("");
-    fetchArtist(userQuery, searchDispatch);
-    fetchAlbum(userQuery, searchDispatch);
-    fetchSongs(userQuery, searchDispatch);
   };
-  console.log(searchState);
   return (
     <Container>
       <InputWrapper>

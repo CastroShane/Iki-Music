@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-const AlbumsResults = ({ albums }) => {
-  let slider = document.querySelector(".albums-container");
+const ArtistsResults = ({ artists }) => {
+  let slider = document.querySelector(".related-artists-container");
 
   const btnPrev = () => {
     if (slider) {
@@ -23,17 +23,17 @@ const AlbumsResults = ({ albums }) => {
     <Container>
       <InfoWrapper>
         <div className="info">
-          <h2>Albums</h2>
+          <h2>Artists</h2>
           <div className="icons">
             <FaArrowLeft size={35} onClick={btnPrev} />
             <FaArrowRight size={35} onClick={btnNext} />
           </div>
         </div>
       </InfoWrapper>
-      <CardWrapper layout className="albums-container">
+      <CardWrapper layout>
         <AnimatePresence>
-          {albums?.map((item) => {
-            const { title, id, album } = item;
+          {artists?.map((item) => {
+            const { id, artist, title_short } = item;
             return (
               <motion.div
                 style={{ display: "flex" }}
@@ -43,9 +43,9 @@ const AlbumsResults = ({ albums }) => {
                 layout
                 key={id}
               >
-                <StyledLink to={`/album/${album.id}`}>
-                  <img src={album.cover_big} alt={title} />
-                  <p> {title}</p>
+                <StyledLink to={`/artist/${artist.id}`}>
+                  <img src={artist.picture_xl} alt={title_short} />
+                  <p> {title_short}</p>
                 </StyledLink>
               </motion.div>
             );
@@ -123,4 +123,4 @@ const CardWrapper = styled.div`
   }
 `;
 
-export default AlbumsResults;
+export default ArtistsResults;
