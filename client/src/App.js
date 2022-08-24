@@ -16,6 +16,7 @@ import PlaylistPage from "./component/pages/PlaylistPage/PlaylistPage";
 import { useContext } from "react";
 import { CurrentUserContext } from "./component/context/CurrentUserContext";
 import GenrePage from "./component/pages/GenrePage/GenrePage";
+import UserLibrary from "./component/pages/UserLibrary/UserLibrary";
 
 const App = () => {
   const { currentUser } = useContext(CurrentUserContext);
@@ -54,6 +55,9 @@ const App = () => {
             <Route exact path="/podcasts">
               {/* temporary since playlist API needs token for this one */}
               <PlaylistPage />
+            </Route>
+            <Route exact path="/library">
+              <UserLibrary />
             </Route>
             {/* <Route exact path="/for-you" component={ForYou}></Route> */}
           </Switch>

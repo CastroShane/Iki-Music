@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import styled from "styled-components";
 import { GoDash } from "react-icons/go";
@@ -26,6 +26,8 @@ const UserBar = () => {
 
   return (
     <Wrapper>
+      <NavLink to={"/library"}>Your Library</NavLink>
+      <Dash />
       {picture ? <StyledImg src={picture} /> : <StyledImg src={avatar} />}
       <StyledSpan>{`Hello, ${fullName.split(" ")[0]}`}</StyledSpan>
       <Dash />
@@ -36,6 +38,12 @@ const UserBar = () => {
   );
 };
 
+const NavLink = styled(Link)`
+  margin: 10px;
+  text-decoration: none;
+  background-color: transparent;
+  color: rgb(255, 106, 106);
+`;
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
