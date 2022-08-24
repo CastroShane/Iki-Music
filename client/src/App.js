@@ -17,7 +17,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "./component/context/CurrentUserContext";
 import GenrePage from "./component/pages/GenrePage/GenrePage";
 import UserLibrary from "./component/pages/UserLibrary/UserLibrary";
-import SearchResultPage from "./component/pages/Homepage/Banner/SearchResultPage";
+import SearchResultPage from "./component/pages/SearchResultsPage/SearchResultPage";
 
 const App = () => {
   const { currentUser } = useContext(CurrentUserContext);

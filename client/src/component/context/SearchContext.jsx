@@ -7,8 +7,6 @@ const initialState = {
 };
 
 const searchReducer = (state, action) => {
-  const { songsResult, albumsResult, artistResult } = state;
-
   switch (action.type) {
     case "search-songs": {
       const newState = {
