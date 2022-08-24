@@ -23,7 +23,7 @@ const UserArtists = ({ artists }) => {
     <Container>
       <InfoWrapper>
         <div className="info">
-          <h2 style={{ fontSize: "2rem" }}>Related Artists</h2>
+          <h2 style={{ fontSize: "2rem" }}>Followed Artists</h2>
           <div className="icons">
             <FaArrowLeft size={35} onClick={btnPrev} />
             <FaArrowRight size={35} onClick={btnNext} />
