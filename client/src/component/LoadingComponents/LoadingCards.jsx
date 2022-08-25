@@ -12,43 +12,43 @@ const LoadingCards = () => {
       exit={{ opacity: 0 }}
       layout
     >
-      <StyledLink>
+      <StyledLink to={"/"}>
         <img src={cardImage} alt="img1" />
         <p>Name</p>
       </StyledLink>
-      <StyledLink>
+      <StyledLink to={"/"}>
         <img src={cardImage} alt="img2" />
         <p>Name</p>
       </StyledLink>
-      <StyledLink>
+      <StyledLink to={"/"}>
         <img src={cardImage} alt="img3" />
         <p>Name</p>
       </StyledLink>
-      <StyledLink>
+      <StyledLink to={"/"}>
         <img src={cardImage} alt="img4" />
         <p>Name</p>
       </StyledLink>
-      <StyledLink>
+      <StyledLink to={"/"}>
         <img src={cardImage} alt="img5" />
         <p>Name</p>
       </StyledLink>
-      <StyledLink>
+      <StyledLink to={"/"}>
         <img src={cardImage} alt="img6" />
         <p>Name</p>
       </StyledLink>
-      <StyledLink>
+      <StyledLink to={"/"}>
         <img src={cardImage} alt="img7" />
         <p>Name</p>
       </StyledLink>
-      <StyledLink>
+      <StyledLink to={"/"}>
         <img src={cardImage} alt="img8" />
         <p>Name</p>
       </StyledLink>
-      <StyledLink>
+      <StyledLink to={"/"}>
         <img src={cardImage} alt="img9" />
         <p>Name</p>
       </StyledLink>
-      <StyledLink>
+      <StyledLink to={"/"}>
         <img src={cardImage} alt="img10" />
         <p>Name</p>
       </StyledLink>
