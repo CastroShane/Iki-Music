@@ -4,6 +4,7 @@ import { useContext } from "react";
 import EditorialContext from "../../../context/EditorialContext";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import LoadingCards from "../../../LoadingComponents/LoadingCards";
 
 const PopularArtists = () => {
   const { artists } = useContext(EditorialContext);
@@ -16,24 +17,28 @@ const PopularArtists = () => {
       </InfoWrapper>
       <CardWrapper layout>
         <AnimatePresence>
-          {artists?.map((artist) => {
-            const { name, id, picture_xl } = artist;
-            return (
-              <motion.div
-                style={{ display: "flex" }}
-                animate={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-                exit={{ opacity: 0 }}
-                layout
-                key={id}
-              >
-                <StyledLink to={`/artist/${id}`}>
-                  <img src={picture_xl} alt={name} />
-                  <p> {name}</p>
-                </StyledLink>
-              </motion.div>
-            );
-          })}
+          {artists ? (
+            artists?.map((artist) => {
+              const { name, id, picture_xl } = artist;
+              return (
+                <motion.div
+                  style={{ display: "flex" }}
+                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  exit={{ opacity: 0 }}
+                  layout
+                  key={id}
+                >
+                  <StyledLink to={`/artist/${id}`}>
+                    <img src={picture_xl} alt={name} />
+                    <p> {name}</p>
+                  </StyledLink>
+                </motion.div>
+              );
+            })
+          ) : (
+            <LoadingCards />
+          )}
         </AnimatePresence>
       </CardWrapper>
     </Container>

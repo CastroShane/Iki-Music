@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
+import LoadingCards from "../../../LoadingComponents/LoadingCards";
 const fetchNewReleases = async () => {
   try {
     const res = await fetch("/new-releases");
@@ -32,24 +33,28 @@ const NewReleases = () => {
       <CardWrapper layout>
         {!isLoading && (
           <AnimatePresence>
-            {newReleases?.map((album) => {
-              const { id, cover_medium, title } = album;
-              return (
-                <motion.div
-                  style={{ display: "flex" }}
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  layout
-                  key={id}
-                >
-                  <StyledLink to={`/album/${id}`}>
-                    <img src={cover_medium} alt={title} />
-                    <p>{title}</p>
-                  </StyledLink>
-                </motion.div>
-              );
-            })}
+            {newReleases ? (
+              newReleases?.map((album) => {
+                const { id, cover_medium, title } = album;
+                return (
+                  <motion.div
+                    style={{ display: "flex" }}
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    exit={{ opacity: 0 }}
+                    layout
+                    key={id}
+                  >
+                    <StyledLink to={`/album/${id}`}>
+                      <img src={cover_medium} alt={title} />
+                      <p>{title}</p>
+                    </StyledLink>
+                  </motion.div>
+                );
+              })
+            ) : (
+              <LoadingCards />
+            )}
           </AnimatePresence>
         )}
       </CardWrapper>
