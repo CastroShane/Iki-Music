@@ -18,6 +18,7 @@ const AlbumReducer = (state, action) => {
     case "get-album-details": {
       const newState = {
         ...action.data,
+        loaded: true,
       };
       return newState;
     }

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import EditorialContext from "../../../context/EditorialContext";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import LoadingCards from "../../../LoadingComponents/LoadingCards";
 
 const TrendingPlaylists = () => {
   const { playlists } = useContext(EditorialContext);
@@ -17,23 +18,27 @@ const TrendingPlaylists = () => {
       </InfoWrapper>
       <CardWrapper layout>
         <AnimatePresence>
-          {playlists?.map((playlist) => {
-            const { id, picture_xl } = playlist;
-            return (
-              <motion.div
-                style={{ display: "flex" }}
-                animate={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
-                exit={{ opacity: 0 }}
-                layout
-                key={id}
-              >
-                <StyledLink to={`/playlist/${id}`}>
-                  <img src={picture_xl} alt={picture_xl} />
-                </StyledLink>
-              </motion.div>
-            );
-          })}
+          {playlists ? (
+            playlists?.map((playlist) => {
+              const { id, picture_xl } = playlist;
+              return (
+                <motion.div
+                  style={{ display: "flex" }}
+                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  exit={{ opacity: 0 }}
+                  layout
+                  key={id}
+                >
+                  <StyledLink to={`/playlist/${id}`}>
+                    <img src={picture_xl} alt={picture_xl} />
+                  </StyledLink>
+                </motion.div>
+              );
+            })
+          ) : (
+            <LoadingCards />
+          )}
         </AnimatePresence>
       </CardWrapper>
     </Container>

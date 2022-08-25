@@ -6,6 +6,7 @@ const initialData = {
   artistRelated: [],
   artistAlbums: [],
   artistTopsSongs: [],
+  loaded: false,
 };
 
 const getArtistDetails = async (id, artistDispatch) => {
@@ -54,6 +55,7 @@ const ArtistReducer = (state, action) => {
       const newState = {
         ...state,
         artistDetails: { ...action.data },
+        loaded: true,
       };
       return newState;
     }
@@ -61,6 +63,7 @@ const ArtistReducer = (state, action) => {
       const newState = {
         ...state,
         artistAlbums: [...action.data],
+        loaded: true,
       };
       return newState;
     }
@@ -68,6 +71,7 @@ const ArtistReducer = (state, action) => {
       const newState = {
         ...state,
         artistRelated: [...action.data],
+        loaded: true,
       };
       return newState;
     }
@@ -75,6 +79,7 @@ const ArtistReducer = (state, action) => {
       const newState = {
         ...state,
         artistTopsSongs: [...action.data],
+        loaded: true,
       };
       return newState;
     }

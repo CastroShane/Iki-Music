@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { AlbumContext } from "../../context/AlbumContext";
 import AlbumBanner from "./Sections/AlbumBanner";
 import AlbumSongs from "./Sections/AlbumSongs/AlbumSongs";
+import LoadingSpinner from "../../LoadingComponents/LoadingSpinner";
 
 const AlbumPage = () => {
   const { setAlbumId, albumState } = useContext(AlbumContext);
@@ -14,10 +15,16 @@ const AlbumPage = () => {
   }, [id, setAlbumId]);
 
   return (
-    <Container>
-      <AlbumBanner albumState={albumState} />
-      <AlbumSongs albumState={albumState} />
-    </Container>
+    <>
+      {albumState.loaded ? (
+        <Container>
+          <AlbumBanner albumState={albumState} />
+          <AlbumSongs albumState={albumState} />
+        </Container>
+      ) : (
+        <LoadingSpinner />
+      )}
+    </>
   );
 };
 
@@ -27,4 +34,5 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export default AlbumPage;
