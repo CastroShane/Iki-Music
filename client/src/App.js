@@ -18,6 +18,7 @@ import { CurrentUserContext } from "./component/context/CurrentUserContext";
 import GenrePage from "./component/pages/GenrePage/GenrePage";
 import UserLibrary from "./component/pages/UserLibrary/UserLibrary";
 import SearchResultPage from "./component/pages/SearchResultsPage/SearchResultPage";
+import AboutPage from "./component/pages/AboutPage/AboutPage";
 
 const App = () => {
   const { currentUser } = useContext(CurrentUserContext);
@@ -55,6 +56,9 @@ const App = () => {
             </Route>
             <Route exact path="/search/">
               <SearchResultPage />
+            </Route>
+            <Route exact path="/about/">
+              <AboutPage />
             </Route>
             <Route exact path="/podcasts">
               {/* temporary since playlist API needs token for this one */}
