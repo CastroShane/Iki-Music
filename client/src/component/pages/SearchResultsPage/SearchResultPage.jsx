@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import SearchContext from "../../context/SearchContext";
 import AlbumsResults from "./Sections/AlbumsResults/AlbumsResults";
@@ -30,7 +30,7 @@ const SearchResultPage = () => {
             <AlbumsResults albums={searchState?.albumsResult} />
           )}
 
-          {total === 0 && <h2>No results found!</h2>}
+          {!searchState && total === 0 && <h2>No results found!</h2>}
         </>
       )}
     </Container>
