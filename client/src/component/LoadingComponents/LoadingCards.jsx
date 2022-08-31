@@ -61,11 +61,11 @@ const StyledLink = styled(Link)`
   width: 150px;
   margin: 15px 20px;
   text-decoration: none;
-  transition: transform 0.2s ease-out;
+  transition: 0.4s ease-out;
 
   &:hover {
     cursor: pointer;
-    transform: translate(2px, -5px);
+    transform: translateY(-20px);
   }
 
   img {
