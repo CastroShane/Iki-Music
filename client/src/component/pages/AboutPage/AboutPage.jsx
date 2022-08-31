@@ -1,22 +1,86 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import DevDetails from "./DevDetails";
+import DevContact from "./DevContact";
+const backdropVariants = {
+  expanded: {
+    width: "1800px",
+    height: "2600px",
+    borderRadius: "20%",
+    transform: "rotate(60deg)",
+  },
 
+  collapsed: {
+    width: "900px",
+    height: "1300px",
+    borderRadius: "50%",
+    transform: "rotate(60deg)",
+  },
+};
 const AboutPage = () => {
+  const [isExpanded, setExpanded] = useState(false);
+  const [active, setActive] = useState("details");
+  const playExpandingAnimation = () => {
+    setExpanded(true);
+    setTimeout(() => {
+      setExpanded(false);
+    }, expandingTransition.duration * 1000 - 1500);
+  };
+  const expandingTransition = {
+    type: "spring",
+    duration: 2.3,
+    stiffness: 30,
+  };
+
+  const switchToContact = () => {
+    playExpandingAnimation();
+
+    setTimeout(() => {
+      setActive("contact");
+    }, 400);
+  };
+
+  const switchToDetails = () => {
+    playExpandingAnimation();
+    setTimeout(() => {
+      setActive("details");
+    }, 400);
+  };
   return (
     <Container>
       <Wrapper>
         <TopContainer>
-          <BackDrop />
-          <HeaderContainer>
-            <HeaderText>Meet The</HeaderText>
-            <HeaderText>Software Developer</HeaderText>
-            <SmallText>Get to know the creator of this App!</SmallText>
-          </HeaderContainer>
+          <BackDrop
+            initial={false}
+            animate={isExpanded ? "expanded" : "collapsed"}
+            variants={backdropVariants}
+            transition={expandingTransition}
+          />
+
+          {active === "details" && (
+            <HeaderContainer>
+              <HeaderText>Meet The</HeaderText>
+              <HeaderText>Software Developer</HeaderText>
+              <SmallText>Get to know the creator of this App!</SmallText>
+            </HeaderContainer>
+          )}
+
+          {active === "contact" && (
+            <HeaderContainer>
+              <HeaderText>Looking for a</HeaderText>
+              <HeaderText>Software Developer</HeaderText>
+              <SmallText>Reach out to Shane, now!</SmallText>
+            </HeaderContainer>
+          )}
         </TopContainer>
         <InnerContainer>
-          <DevDetails />
+          {active === "details" && (
+            <DevDetails switchToContact={switchToContact} />
+          )}
+          {active === "contact" && (
+            <DevContact switchToDetails={switchToDetails} />
+          )}
         </InnerContainer>
       </Wrapper>
     </Container>

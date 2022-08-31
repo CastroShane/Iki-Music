@@ -1,21 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 import Shane from "./assets/shane_ikiapp.jpg";
+import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 
-const DevDetails = () => {
+const DevDetails = ({ switchToContact }) => {
   return (
     <BoxContainer>
       <div className="imagebox">
         <img src={Shane} />
         <h1>Shane Castro</h1>
         <p>Full-Stack Software Developer</p>
+        <div className="icons">
+          <FaLinkedin size={40} />
+          <FaGithubSquare size={40} />
+        </div>
       </div>
       <div className="detailsbox">
         <div className="details">
           <h3>About:</h3>
           <p>
-            Passionate full-stack engineer with years of hands-on experience in
-            developing scalable websites/applications using a wide range of
+            Passionate full-stack engineer with 1+ years of hands-on experience
+            in developing scalable websites/applications using a wide range of
             front-end and back-end skills like Javascript, ReactJS, NodeJS, etc.
             Looking to further enhance my React and NodeJS skills as a
             full-stack developer.
@@ -30,13 +35,7 @@ const DevDetails = () => {
 
           <h3>Work Experience:</h3>
           <p>
-            Full-Stack Software Engineer <span> - Soon</span>
-          </p>
-          <p>
-            SEO Account Manager <span> - Labelium</span>
-          </p>
-          <p>
-            SEO Specialist <span> - RankWorks</span>
+            Full-Stack Software Engineer <span> - Company</span>
           </p>
           <h3>Interests:</h3>
           <p>Sports (Basketball, Snowboarding, Weightlifting)</p>
@@ -45,7 +44,7 @@ const DevDetails = () => {
         </div>
 
         <div className="button">
-          <ContactButton>Contact Me!</ContactButton>
+          <ContactButton onClick={switchToContact}>Contact Me!</ContactButton>
         </div>
       </div>
     </BoxContainer>
@@ -73,6 +72,11 @@ const BoxContainer = styled.div`
     p {
       margin-top: 0px;
       color: grey;
+    }
+
+    .icons {
+      margin-top: 5px;
+      display: flex;
     }
   }
 
@@ -104,7 +108,7 @@ const BoxContainer = styled.div`
     }
   }
   img {
-    width: 270px;
+    width: 260px;
     height: auto;
     border-radius: 50%;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
