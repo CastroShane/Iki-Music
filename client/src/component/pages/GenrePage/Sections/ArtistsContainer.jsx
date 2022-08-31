@@ -54,7 +54,7 @@ const Card = styled.div`
   border-radius: 12px;
   overflow: hidden;
   width: fit-content;
-  transition: transform 0.2s ease-out;
+  transition: 0.4s ease-out;
 
   &:hover {
     transform: translate(5px, -10px);
