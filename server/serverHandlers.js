@@ -195,7 +195,7 @@ const addNewUser = async (req, res) => {
     songs: [],
     albums: [],
     playlists: [],
-    artist: [],
+    artists: [],
   };
   try {
     const newUserDetails = {
@@ -250,7 +250,7 @@ const addGoogleUser = async (req, res) => {
     songs: [],
     albums: [],
     playlists: [],
-    artist: [],
+    artists: [],
   };
   try {
     const newUserDetails = {
