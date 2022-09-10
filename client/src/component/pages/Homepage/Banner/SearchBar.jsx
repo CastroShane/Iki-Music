@@ -45,7 +45,6 @@ const SearchBar = () => {
     await fetchArtist(userQuery, searchDispatch);
     await fetchAlbum(userQuery, searchDispatch);
     await fetchSongs(userQuery, searchDispatch);
-    setUserQuery("");
   };
   return (
     <Container>
