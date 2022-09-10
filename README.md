@@ -16,6 +16,7 @@ Users can browse, listen, and save their favorite content!
 
 - Play music
 - Browse by genres
+- Search artists, songs, and albums
 - Sign-in or sign-up as a user
 - Save your favorite albums, artists, and songs
 - View artist and album page
