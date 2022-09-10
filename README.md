@@ -59,15 +59,15 @@ Users can access their saved songs, albums, and artists under "Your Library" tab
 
 ## Genre Page
 Users can browse by genre
-![https://im4.ezgif.com/tmp/ezgif-4-32ea389e22.webp](https://im4.ezgif.com/tmp/ezgif-4-32ea389e22.webp)
+![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-32ea389e22.webp)
 
 ## Artist Page
 View artist's albums, songs, and related
-![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-b494d59a5f.webp)
+![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-3a747245b4.webp)
 
 ## Album Page
 View album songs
-![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-2669e1aa2f.webp)
+![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-404ca071d7.webp)
 
 ## Meet The Developer
 Get to know me :)
