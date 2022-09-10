@@ -51,7 +51,7 @@ Users can sign or sign up via e-mail or Google
 
 ## Favorites
 Users can save their favorite songs, albums, and artists
-![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-246278fb33.webp)
+![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-48d7aafaec.webp)
 
 ## User Library Page
 Users can access their saved songs, albums, and artists under "Your Library" tab
