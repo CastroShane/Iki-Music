@@ -1,7 +1,7 @@
 
 # Iki-Music
 
-A full-stak web music application that gives you access to the songs from artists all over the world. 
+A full-stack web music application that gives you access to songs from artists all over the world.
 Users can browse, listen, and save their favorite content!
 ## Tech Stack
 
