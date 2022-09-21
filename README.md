@@ -60,11 +60,16 @@ https://user-images.githubusercontent.com/98923162/191603450-9779f108-c9e5-4844-
 
 ## Favorites
 Users can save their favorite songs, albums, and artists
-![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-48d7aafaec.webp)
+
+
+https://user-images.githubusercontent.com/98923162/191603813-a8e2ffca-5bd5-4701-9d4b-c42b2fb680c2.mp4
+
 
 ## User Library Page
 Users can access their saved songs, albums, and artists under "Your Library" tab
-![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-c101410fd6.webp)
+
+
+https://user-images.githubusercontent.com/98923162/191604096-66abbce6-d7ce-4a5c-9372-8c8ab39e10a8.mp4
 
 ## Genre Page
 Users can browse by genre
