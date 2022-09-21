@@ -80,7 +80,10 @@ https://user-images.githubusercontent.com/98923162/191605227-3cfea39b-b29d-47cf-
 
 ## Artist Page
 View artist's albums, songs, and related
-![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-3a747245b4.webp)
+
+
+https://user-images.githubusercontent.com/98923162/191605478-fa04aed9-7ddf-4e21-89cd-d1fa1c8b6847.mp4
+
 
 ## Album Page
 View album songs
