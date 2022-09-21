@@ -87,11 +87,17 @@ https://user-images.githubusercontent.com/98923162/191605478-fa04aed9-7ddf-4e21-
 
 ## Album Page
 View album songs
-![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-404ca071d7.webp)
+
+
+https://user-images.githubusercontent.com/98923162/191605722-5e6d3910-ffac-4dfe-9ba5-023b9aa346ab.mp4
+
 
 ## Meet The Developer
 Get to know me :)
-![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-6bab86c24a.webp)
+
+
+https://user-images.githubusercontent.com/98923162/191605917-ce7282b5-8f7a-4438-ae82-fb67bcbbff67.mp4
+
 
 ## 🔗 Links
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/castroshane20/)
