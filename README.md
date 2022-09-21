@@ -53,7 +53,10 @@ https://user-images.githubusercontent.com/98923162/191601910-750cc13c-1200-42ec-
 
 ## Login Page
 Users can sign or sign up via e-mail or Google
-![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-96ab486282.webp)
+
+
+https://user-images.githubusercontent.com/98923162/191603450-9779f108-c9e5-4844-b750-d84da2136693.mp4
+
 
 ## Favorites
 Users can save their favorite songs, albums, and artists
