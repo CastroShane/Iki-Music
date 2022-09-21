@@ -73,7 +73,10 @@ https://user-images.githubusercontent.com/98923162/191604096-66abbce6-d7ce-4a5c-
 
 ## Genre Page
 Users can browse by genre
-![App Screenshot](https://im4.ezgif.com/tmp/ezgif-4-e201eeb3f6.webp)
+
+
+https://user-images.githubusercontent.com/98923162/191605227-3cfea39b-b29d-47cf-af08-50ec9c4b72d1.mp4
+
 
 ## Artist Page
 View artist's albums, songs, and related
