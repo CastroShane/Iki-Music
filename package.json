@@ -1,0 +1,22 @@
+{
+  "name": "iki-music",
+  "version": "1.0.0",
+  "description": "A full-stack web music application that gives you access to songs from artists all over the world. Users can browse, listen, and save their favorite content! ## Tech Stack",
+  "main": "index.js",
+  "scripts": {
+    "server": "npm run start --prefix server",
+    "client": "npm run start --prefix client",
+    "watch": "npm run server & yarn client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CastroShane/Iki-Music.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CastroShane/Iki-Music/issues"
+  },
+  "homepage": "https://github.com/CastroShane/Iki-Music#readme"
+}
