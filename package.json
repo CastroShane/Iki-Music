@@ -6,8 +6,7 @@
   "scripts": {
     "server": "npm run start --prefix server",
     "client": "npm run start --prefix client",
-    "watch": "npm run server & yarn client",
-    "build": "npm run build --prefix client"
+    "watch": "npm run server & yarn client"
   },
   "repository": {
     "type": "git",
