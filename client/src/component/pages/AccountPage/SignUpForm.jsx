@@ -38,7 +38,7 @@ const SignUpForm = () => {
       return;
     }
 
-    const response = await fetch("/sign-up", {
+    const response = await fetch("https://iki-music.onrender.com/sign-up", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

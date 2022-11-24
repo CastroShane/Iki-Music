@@ -11,7 +11,7 @@ const initialData = {
 
 const getArtistDetails = async (id, artistDispatch) => {
   try {
-    const response = await fetch(`/artist/${id}`);
+    const response = await fetch(`https://iki-music.onrender.com/artist/${id}`);
     const data = await response.json();
     artistDispatch({ type: "get-basic-details", data: data.data });
   } catch (err) {
@@ -21,7 +21,9 @@ const getArtistDetails = async (id, artistDispatch) => {
 
 const getArtistAlbums = async (id, artistDispatch) => {
   try {
-    const response = await fetch(`/artist/${id}/albums`);
+    const response = await fetch(
+      `https://iki-music.onrender.com/artist/${id}/albums`
+    );
     const data = await response.json();
     artistDispatch({ type: "get-albums", data: data.data });
   } catch (err) {
@@ -31,7 +33,9 @@ const getArtistAlbums = async (id, artistDispatch) => {
 
 const getArtistRelated = async (id, artistDispatch) => {
   try {
-    const response = await fetch(`/artist/${id}/related`);
+    const response = await fetch(
+      `https://iki-music.onrender.com/artist/${id}/related`
+    );
     const data = await response.json();
     artistDispatch({ type: "get-related", data: data.data });
   } catch (err) {
@@ -41,7 +45,9 @@ const getArtistRelated = async (id, artistDispatch) => {
 
 const getArtistTopSongs = async (id, artistDispatch) => {
   try {
-    const response = await fetch(`/artist/${id}/top`);
+    const response = await fetch(
+      `https://iki-music.onrender.com/artist/${id}/top`
+    );
     const data = await response.json();
     artistDispatch({ type: "get-top-songs", data: data.data });
   } catch (err) {

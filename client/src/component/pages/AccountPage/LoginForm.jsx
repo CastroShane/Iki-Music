@@ -50,7 +50,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("/sign-in", {
+    const response = await fetch("https://iki-music.onrender.com/sign-in", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const LoginForm = () => {
         picture,
         favorites,
       };
-      const res = await fetch("/google-signin", {
+      const res = await fetch("https://iki-music.onrender.com/google-signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

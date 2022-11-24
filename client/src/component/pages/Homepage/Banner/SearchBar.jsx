@@ -15,7 +15,9 @@ const fetchArtist = async (userQuery, dispatcher) => {
 
 const fetchAlbum = async (userQuery, dispatcher) => {
   try {
-    const response = await fetch(`/search-albums/?q=${userQuery}`);
+    const response = await fetch(
+      `https://iki-music.onrender.com/search-albums/?q=${userQuery}`
+    );
     const data = await response.json();
     dispatcher({ type: "search-albums", data: data.data });
   } catch (err) {
@@ -25,7 +27,9 @@ const fetchAlbum = async (userQuery, dispatcher) => {
 
 const fetchSongs = async (userQuery, dispatcher) => {
   try {
-    const response = await fetch(`/search-songs/?q=${userQuery}`);
+    const response = await fetch(
+      `https://iki-music.onrender.com/search-songs/?q=${userQuery}`
+    );
     const data = await response.json();
     dispatcher({ type: "search-songs", data: data.data });
   } catch (err) {

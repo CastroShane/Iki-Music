@@ -11,7 +11,9 @@ const GenrePage = () => {
   }, []);
   const fetchGenreArtists = async () => {
     try {
-      const res = await fetch(`/genre/${id}/artists`);
+      const res = await fetch(
+        `https://iki-music.onrender.com/genre/${id}/artists`
+      );
       return await res.json();
     } catch (err) {
       console.log(err);

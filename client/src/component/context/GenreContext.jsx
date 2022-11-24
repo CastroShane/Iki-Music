@@ -28,7 +28,9 @@ export const GenreContextProvider = ({ children }) => {
   useEffect(() => {
     const fetchGenreData = async () => {
       try {
-        const response = await fetch("/all-genres");
+        const response = await fetch(
+          "https://iki-music.onrender.com/all-genres"
+        );
         const jsonData = await response.json();
 
         const data = await jsonData.data.data;

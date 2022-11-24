@@ -11,7 +11,7 @@ const initialState = {
 const FavoritesReducer = (state, action) => {
   const updateUserFavorites = async (email, favorites) => {
     try {
-      await fetch("/favorites", {
+      await fetch("https://iki-music.onrender.com/favorites", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({

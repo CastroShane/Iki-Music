@@ -5,7 +5,7 @@ const initialData = {};
 
 const getAlbumDetails = async (id, albumDispatch) => {
   try {
-    const response = await fetch(`/album/${id}`);
+    const response = await fetch(`https://iki-music.onrender.com/album/${id}`);
     const data = await response.json();
     albumDispatch({ type: "get-album-details", data: data.data });
   } catch (err) {

@@ -6,7 +6,7 @@ import { useQuery } from "react-query";
 import LoadingCards from "../../../LoadingComponents/LoadingCards";
 const fetchNewReleases = async () => {
   try {
-    const res = await fetch("/new-releases");
+    const res = await fetch("https://iki-music.onrender.com/new-releases");
     return await res.json();
   } catch (err) {
     console.log(err);

@@ -28,7 +28,7 @@ const EditorialReducer = (state, action) => {
 
 const fetchEditorials = async () => {
   try {
-    const res = await fetch("/editorial");
+    const res = await fetch("https://iki-music.onrender.com/editorial");
     return await res.json();
   } catch (err) {
     console.log(err);
