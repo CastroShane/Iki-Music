@@ -24,23 +24,24 @@ const {
 } = require("./serverHandlers");
 
 app
+  .use(function (req, res, next) {
+    res.header("access-Control-allow-origin", "*");
+    res.header(
+      "access-control-allow-headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.header(
+      "access-control-allow-methods",
+      "PUT, POST, GET, DELETE, OPTIONS"
+    );
+    next();
+  })
   .use(morgan("tiny"))
   .use(express.static("public"))
   .use(express.json())
   .use(express.urlencoded({ extended: false }))
   .use("/", express.static(__dirname + "/"))
-  .use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    res.header(
-      "Access-Control-Allow-Methods",
-      "PUT, POST, GET, DELETE, OPTIONS"
-    );
-    next();
-  })
+
   // erndpoints
 
   .get("/all-genres", getGenres)
