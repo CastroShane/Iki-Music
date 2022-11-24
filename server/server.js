@@ -26,14 +26,6 @@ const {
 app
   .use(function (req, res, next) {
     res.header("access-Control-allow-origin", "*");
-    res.header(
-      "access-control-allow-headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    res.header(
-      "access-control-allow-methods",
-      "PUT, POST, GET, DELETE, OPTIONS"
-    );
     next();
   })
   .use(morgan("tiny"))
