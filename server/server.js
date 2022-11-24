@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-
+const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 8000;
 const {
@@ -39,6 +39,7 @@ app
   .use(morgan("tiny"))
   .use(express.static("public"))
   .use(express.json())
+  .use(cors())
   .use(express.urlencoded({ extended: false }))
   .use("/", express.static(__dirname + "/"))
 
