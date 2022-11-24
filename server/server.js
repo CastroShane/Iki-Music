@@ -22,13 +22,25 @@ const {
   searchForAlbums,
   searchForSongs,
 } = require("./serverHandlers");
+
 app
   .use(morgan("tiny"))
   .use(express.static("public"))
   .use(express.json())
   .use(express.urlencoded({ extended: false }))
   .use("/", express.static(__dirname + "/"))
-
+  .use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.header(
+      "Access-Control-Allow-Methods",
+      "PUT, POST, GET, DELETE, OPTIONS"
+    );
+    next();
+  })
   // erndpoints
 
   .get("/all-genres", getGenres)
